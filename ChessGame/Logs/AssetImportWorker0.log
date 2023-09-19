@@ -22,7 +22,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51372
+60382
 Successfully changed project path to: /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame
 /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -56,11 +56,11 @@ Successfully changed project path to: /Users/blancliao/Documents/GitHub/chess-ga
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [8216173376] Host "[IP] 192.168.100.126 [Port] 0 [Flags] 2 [Guid] 3516621869 [EditorId] 3516621869 [Version] 1048832 [Id] OSXEditor(0,Blancs-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [8402443072] Host "[IP] 192.168.100.126 [Port] 0 [Flags] 2 [Guid] 2046211818 [EditorId] 2046211818 [Version] 1048832 [Id] OSXEditor(0,Blancs-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [8216173376] Host "[IP] 192.168.100.126 [Port] 0 [Flags] 2 [Guid] 3516621869 [EditorId] 3516621869 [Version] 1048832 [Id] OSXEditor(0,Blancs-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8402443072] Host "[IP] 192.168.100.126 [Port] 0 [Flags] 2 [Guid] 2046211818 [EditorId] 2046211818 [Version] 1048832 [Id] OSXEditor(0,Blancs-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 16.38 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 9.49 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.7f1 (b16b3b16c7a0)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -75,46 +75,46 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56516
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56730
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2022.3.7f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.004546 seconds.
-- Loaded All Assemblies, in  0.442 seconds
+Registered in 0.003408 seconds.
+- Loaded All Assemblies, in  0.395 seconds
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.203 seconds
-Domain Reload Profiling: 645ms
-	BeginReloadAssembly (210ms)
+- Finished resetting the current domain, in  0.184 seconds
+Domain Reload Profiling: 579ms
+	BeginReloadAssembly (145ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (32ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (44ms)
-	LoadAllAssembliesAndSetupDomain (146ms)
-		LoadAssemblies (210ms)
+	RebuildCommonClasses (70ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (129ms)
+		LoadAssemblies (146ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (143ms)
-			TypeCache.Refresh (141ms)
-				TypeCache.ScanAssembly (111ms)
+		AnalyzeDomain (126ms)
+			TypeCache.Refresh (125ms)
+				TypeCache.ScanAssembly (107ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (203ms)
+	FinalizeReload (184ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (144ms)
+		SetupLoadedEditorAssemblies (137ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (5ms)
+			SetLoadedEditorAssemblies (4ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (95ms)
-			ProcessInitializeOnLoadMethodAttributes (35ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (92ms)
+			ProcessInitializeOnLoadMethodAttributes (34ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -124,40 +124,40 @@ Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.660 seconds
-Refreshing native plugins compatible for Editor in 3.34 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.651 seconds
+Refreshing native plugins compatible for Editor in 2.49 ms, found 2 plugins.
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.352 seconds
-Domain Reload Profiling: 1013ms
-	BeginReloadAssembly (135ms)
+- Finished resetting the current domain, in  0.344 seconds
+Domain Reload Profiling: 995ms
+	BeginReloadAssembly (124ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (20ms)
-	RebuildCommonClasses (31ms)
+	RebuildCommonClasses (28ms)
 	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (30ms)
-	LoadAllAssembliesAndSetupDomain (455ms)
-		LoadAssemblies (386ms)
+	initialDomainReloadingComplete (28ms)
+	LoadAllAssembliesAndSetupDomain (461ms)
+		LoadAssemblies (387ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (151ms)
-			TypeCache.Refresh (138ms)
-				TypeCache.ScanAssembly (120ms)
-			ScanForSourceGeneratedMonoScriptInfo (9ms)
+		AnalyzeDomain (146ms)
+			TypeCache.Refresh (134ms)
+				TypeCache.ScanAssembly (119ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
 			ResolveRequiredComponents (3ms)
-	FinalizeReload (353ms)
+	FinalizeReload (344ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (241ms)
+		SetupLoadedEditorAssemblies (233ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (3ms)
 			SetLoadedEditorAssemblies (2ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (37ms)
-			ProcessInitializeOnLoadAttributes (184ms)
+			BeforeProcessingInitializeOnLoad (36ms)
+			ProcessInitializeOnLoadAttributes (178ms)
 			ProcessInitializeOnLoadMethodAttributes (13ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
@@ -165,13 +165,451 @@ Domain Reload Profiling: 1013ms
 		AwakeInstancesAfterBackupRestoration (3ms)
 Launching external process: /Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/Tools/UnityShaderCompiler
 Launched and connected shader compiler UnityShaderCompiler after 0.06 seconds
-Refreshing native plugins compatible for Editor in 5.23 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.87 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3068 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 31 unused Assets / (50.9 KB). Loaded Objects now: 3530.
-Memory consumption went from 118.7 MB to 118.6 MB.
-Total: 2.730750 ms (FindLiveObjects: 0.120833 ms CreateObjectMapping: 0.044334 ms MarkObjects: 2.494666 ms  DeleteObjects: 0.070375 ms)
+Unloading 3069 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (50.5 KB). Loaded Objects now: 3531.
+Memory consumption went from 118.9 MB to 118.8 MB.
+Total: 2.646417 ms (FindLiveObjects: 0.119083 ms CreateObjectMapping: 0.045541 ms MarkObjects: 2.391709 ms  DeleteObjects: 0.089334 ms)
 
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x17fc6f000 may have been prematurely finalized
+Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.456 seconds
+Refreshing native plugins compatible for Editor in 2.37 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.087 seconds
+Domain Reload Profiling: 1543ms
+	BeginReloadAssembly (132ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (32ms)
+	RebuildCommonClasses (43ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (252ms)
+		LoadAssemblies (297ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (26ms)
+			TypeCache.Refresh (16ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (1088ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (230ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (172ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3062 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.6 KB). Loaded Objects now: 3534.
+Memory consumption went from 122.8 MB to 122.7 MB.
+Total: 2.590542 ms (FindLiveObjects: 0.109834 ms CreateObjectMapping: 0.045375 ms MarkObjects: 2.394125 ms  DeleteObjects: 0.040250 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x17fe87000 may have been prematurely finalized
+Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.450 seconds
+Refreshing native plugins compatible for Editor in 2.07 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.145 seconds
+Domain Reload Profiling: 1595ms
+	BeginReloadAssembly (181ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (52ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (210ms)
+		LoadAssemblies (288ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1145ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (229ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (173ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3062 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.5 KB). Loaded Objects now: 3537.
+Memory consumption went from 127.8 MB to 127.7 MB.
+Total: 2.609667 ms (FindLiveObjects: 0.119167 ms CreateObjectMapping: 0.045166 ms MarkObjects: 2.386209 ms  DeleteObjects: 0.058375 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 198342.819453 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '6b0a4c7538f021813a313e3c1fb866f2') in 0.290639 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Chess/Demo/Scripts/Main.cs
+  artifactKey: Guid(76b70c86cdc4e421f917485770365f81) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Demo/Scripts/Main.cs using Guid(76b70c86cdc4e421f917485770365f81) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '1a079e92426def886ca70fdfaef5ae60') in 0.093966 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000115 seconds.
+  path: Assets/Chess/Prefab/Black Bishop.prefab
+  artifactKey: Guid(6f3013651623b446c91ae9d7270ba7b5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/Black Bishop.prefab using Guid(6f3013651623b446c91ae9d7270ba7b5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'e21e554fc4f4f6b305c555f22284c7b0') in 0.020702 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Chess/Fbx/Pieces/Rook.fbx
+  artifactKey: Guid(0260a05ef2c2a496f852aa0422dce267) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Pieces/Rook.fbx using Guid(0260a05ef2c2a496f852aa0422dce267) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'efe92ddd66994b94184c62f8db27d2a8') in 0.053449 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000084 seconds.
+  path: Assets/Chess/Scripts/ChessUiEngine.cs
+  artifactKey: Guid(ccbaef9ffb1fc43f3acc022aa20d19a7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/ChessUiEngine.cs using Guid(ccbaef9ffb1fc43f3acc022aa20d19a7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '9ef8e889d8d91013ae9a9f0ea0b7be88') in 0.005709 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '8c9c9d512c681a72c8abe696771ff55c') in 0.033278 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/Chess/Fbx/Pieces/King.fbx
+  artifactKey: Guid(38b25f2f6027b4fe3a7e76c64d059379) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Pieces/King.fbx using Guid(38b25f2f6027b4fe3a7e76c64d059379) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '2fed46a5fc00dac793e3ca37ccbf2725') in 0.019311 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/Chess/Prefab/Black Pawn.prefab
+  artifactKey: Guid(7302be28962c243678252e7c6255fdbc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/Black Pawn.prefab using Guid(7302be28962c243678252e7c6255fdbc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '2a87a84eb3ed78d6a2bfd3cda420838c') in 0.008339 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000115 seconds.
+  path: Assets/Chess/Prefab/White Rook.prefab
+  artifactKey: Guid(55350a888e04c4e80aaa2960bea7e3c0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/White Rook.prefab using Guid(55350a888e04c4e80aaa2960bea7e3c0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '8fdf9b4001254fcd165d1ce89313f941') in 0.009410 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/Chess/Materials/chess board.mat
+  artifactKey: Guid(26800bd8bbb96415d92daf45a8eb3c69) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Materials/chess board.mat using Guid(26800bd8bbb96415d92daf45a8eb3c69) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '01d21096ed2a99721f81ba32a9620607') in 0.024703 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000114 seconds.
+  path: Assets/Chess/Fbx/Materials/No Name.mat
+  artifactKey: Guid(134127450e26841aab39930bf53242fb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Materials/No Name.mat using Guid(134127450e26841aab39930bf53242fb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '13607420acc536b03eca89d7cb51873d') in 0.119481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/Chess/Prefab/White Pawn.prefab
+  artifactKey: Guid(6653ddcbd4a2e453ba6e07f8931ce86c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/White Pawn.prefab using Guid(6653ddcbd4a2e453ba6e07f8931ce86c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '30bee353054552305a558ee3b2452b6a') in 0.008861 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000081 seconds.
+  path: Assets/Chess/Fbx/chess board.jpg
+  artifactKey: Guid(94971a6868d2f445b82cbe927190bf3e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/chess board.jpg using Guid(94971a6868d2f445b82cbe927190bf3e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '9b8ae723ea2602fc1c78ae691289799a') in 0.044352 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Chess/Materials/chess pieces 1.mat
+  artifactKey: Guid(2943ea47fe1c741a9ae33131630c9cf1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Materials/chess pieces 1.mat using Guid(2943ea47fe1c741a9ae33131630c9cf1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '647c9dbcdc3bdb36355114b1524a32bd') in 0.015230 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000087 seconds.
+  path: Assets/Chess/Fbx/Board.fbx
+  artifactKey: Guid(3ee2017470d694a14ab7b5f59f593da2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Board.fbx using Guid(3ee2017470d694a14ab7b5f59f593da2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '4aa5f67b8caa23c8ff39b0918f80b982') in 0.027368 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Chess/Materials/Board.mat
+  artifactKey: Guid(d83426a97921b42a8a21a1e9d30e8041) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Materials/Board.mat using Guid(d83426a97921b42a8a21a1e9d30e8041) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '9b677522af69276d420b2bca851afb28') in 0.046568 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/Chess/Prefab/Black Rook.prefab
+  artifactKey: Guid(bcf19558551614c79a55a9e750ad43b1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/Black Rook.prefab using Guid(bcf19558551614c79a55a9e750ad43b1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '0552a51701950f3a6090ca45ea159380') in 0.028317 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Chess/Prefab/White Bishop.prefab
+  artifactKey: Guid(8bc6354dcbfe34a3fba0b40d5887dd47) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/White Bishop.prefab using Guid(8bc6354dcbfe34a3fba0b40d5887dd47) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '450dd2c9949202c56472d5351ab5f18c') in 0.021632 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Chess/Fbx/Pieces/Bishop.fbx
+  artifactKey: Guid(655746ad7a320435e83fa1313563ebfd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Pieces/Bishop.fbx using Guid(655746ad7a320435e83fa1313563ebfd) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'b4c3f567338ce6ad134d3965720cb096') in 0.027910 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Chess/Prefab/White King.prefab
+  artifactKey: Guid(973983e22257f4007b9b0bb5ccae1184) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/White King.prefab using Guid(973983e22257f4007b9b0bb5ccae1184) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'ffb421ce3f6b8c5e28f83fd6836c48f3') in 0.016684 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Chess/Prefab/White Queen.prefab
+  artifactKey: Guid(ff7e7084bc927405da871cf1faa802ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Prefab/White Queen.prefab using Guid(ff7e7084bc927405da871cf1faa802ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '3f0bbe06a3619602e890b0085bd795de') in 0.006690 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/Chess/Fbx/Pieces/Queen.fbx
+  artifactKey: Guid(f4285efefb82a4b62a2378a8762e2951) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Pieces/Queen.fbx using Guid(f4285efefb82a4b62a2378a8762e2951) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'bac057320a1dcc3a2f94a21f9a794cf7') in 0.011920 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Chess/Fbx/Pieces/Knight.fbx
+  artifactKey: Guid(71b980b3ed76b4d1dad0629bff86e50b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Fbx/Pieces/Knight.fbx using Guid(71b980b3ed76b4d1dad0629bff86e50b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'eca2f27e65c2110b70995472ebfca414') in 0.015455 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 145.965693 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'a13725e1019f55cf07e9731324c4deec') in 0.034494 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 24.618290 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'd2bf3a912c6af5435e841e39fdfee05b') in 0.032201 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 27.684901 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'f730c30ef297ba966a1c45d200fdbcc5') in 0.088409 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 25.091014 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '84ae375da5bcef54b11ed6a10af89ec7') in 0.031880 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 232.601883 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '2be3e4b98e1a3e0fb535a9ff3b0f71e2') in 0.023872 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 10.225828 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'e46fc27cc925ced4ee22b8ebce8ab4d5') in 0.022634 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 63.334991 seconds.
+  path: Assets/Chess/Scripts/chess.cs
+  artifactKey: Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Chess/Scripts/chess.cs using Guid(7937703cd95ba47adb405e6039c9f395) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'ff32bf6de8344714fa1721d69766dfd7') in 0.030186 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16d98f000 may have been prematurely finalized
+Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/blancliao/Documents/GitHub/chess-game-final/ChessGame/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.497 seconds
+Refreshing native plugins compatible for Editor in 3.81 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.063 seconds
+Domain Reload Profiling: 2561ms
+	BeginReloadAssembly (152ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (54ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (286ms)
+		LoadAssemblies (333ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (20ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (2064ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (221ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (163ms)
+			ProcessInitializeOnLoadMethodAttributes (13ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 2.94 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3061 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.5 KB). Loaded Objects now: 3542.
+Memory consumption went from 134.5 MB to 134.5 MB.
+Total: 3.114542 ms (FindLiveObjects: 0.142417 ms CreateObjectMapping: 0.054375 ms MarkObjects: 2.857959 ms  DeleteObjects: 0.058875 ms)
+
+Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
