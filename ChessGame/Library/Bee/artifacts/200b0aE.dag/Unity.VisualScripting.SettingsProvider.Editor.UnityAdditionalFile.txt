@@ -1,1 +1,1 @@
-/Users/blancliao/Documents/GitHub/chess-game-final/ChessGame
+/Users/Jon/Documents/GitHub/chess-game-final/ChessGame
