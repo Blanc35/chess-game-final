@@ -15,6 +15,11 @@ public class chess : MonoBehaviour
     {
         
     }
+    virtual bool isvalid(int x,int y)
+    {
+
+    }
+
     enum chesspPieces
     {
         White,
@@ -48,6 +53,43 @@ public class chess : MonoBehaviour
         new int[]{1,-1},
         new int[]{-1,-1},
         new int[]{-1,1}
+    };
+        int[][] knight = 
+    {
+        new int[]{2,1},
+        new int[]{-2,1},
+        new int[]{-2,-1},
+        new int[]{2,-1},
+        new int[]{-1,2},
+        new int[]{-1,-2},
+        new int[]{1,-2},
+        new int[]{1,2}
+    };
+        int[][] pawn = 
+    {
+        new int[]{0,1},
+    };
+            int[][] queen = 
+    {
+        new int[]{1,1},
+        new int[]{0,1},
+        new int[]{0,-1},
+        new int[]{-1,0},
+        new int[]{-1,-1},
+        new int[]{-1,1},
+        new int[]{1,-1},
+        
+    };
+                int[][] king = 
+    {
+        new int[]{1,1},
+        new int[]{0,1},
+        new int[]{0,-1},
+        new int[]{-1,0},
+        new int[]{-1,-1},
+        new int[]{-1,1},
+        new int[]{1,-1},
+        
     };
 }
 
