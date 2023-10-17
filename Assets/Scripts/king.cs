@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class king : chess
+public class King : chess
 {
 
-                int[][] king = 
+    int[][] king = 
     {
         new int[]{1,1},
         new int[]{0,1},
@@ -28,13 +28,13 @@ public class king : chess
         
     }
 
-    override bool isvalid(int x,int y)
+    public override bool isvalid(int x,int y)
     {
         for(int i=0;i<king.GetLength(0);i++)
         {
             for(int a=0;a<king.GetLength(1);a++)
             {
-                if(king[i,a]==king[x,y])
+                if(king[i][a] == king[x][y])
                 {
                     return true;
                 }

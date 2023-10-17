@@ -15,9 +15,9 @@ public class chess : MonoBehaviour
     {
         
     }
-    virtual bool isvalid(int x,int y)
+    public virtual bool isvalid(int x,int y)
     {
-
+        return false;
     }
 
     enum chesspPieces
