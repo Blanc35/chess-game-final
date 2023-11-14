@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rook : chess
+public class Queen : chess
 {
     // Start is called before the first frame update
-        int[][] rook = 
+            int[][] queen = 
     {
-        new int[]{1,0},
-        new int[]{-1,0},
+        new int[]{1,1},
         new int[]{0,1},
-        new int[]{0,-1}
+        new int[]{0,-1},
+        new int[]{-1,0},
+        new int[]{-1,-1},
+        new int[]{-1,1},
+        new int[]{1,-1},
+        
     };
     void Start()
     {
@@ -26,11 +30,11 @@ public class Rook : chess
     {
         for(int c=1;c<8;c++)
         {
-        for(int i=0;i<rook.GetLength(0);i++)
+        for(int i=0;i<queen.GetLength(0);i++)
         {
-            for(int a=0;a<rook.GetLength(1);a++)
+            for(int a=0;a<queen.GetLength(1);a++)
             {
-                if(rook[i][a]*c == rook[x][y])
+                if(queen[i][a]*8 == queen[x][y])
                 {
                     return true;
                 }

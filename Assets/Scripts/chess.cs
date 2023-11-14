@@ -78,6 +78,7 @@ public class chess : MonoBehaviour
         new int[]{-1,-1},
         new int[]{-1,1},
         new int[]{1,-1},
+        new int[]{1,0},
         
     };
                 int[][] king = 
@@ -89,6 +90,7 @@ public class chess : MonoBehaviour
         new int[]{-1,-1},
         new int[]{-1,1},
         new int[]{1,-1},
+        new int[]{1,0},
         
     };
 }

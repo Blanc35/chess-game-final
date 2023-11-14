@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rook : chess
+public class Bishop : chess
 {
     // Start is called before the first frame update
-        int[][] rook = 
+    int[][] bishop = 
     {
-        new int[]{1,0},
-        new int[]{-1,0},
-        new int[]{0,1},
-        new int[]{0,-1}
+        new int[]{1,1},
+        new int[]{1,-1},
+        new int[]{-1,-1},
+        new int[]{-1,1}
     };
     void Start()
     {
@@ -24,20 +24,17 @@ public class Rook : chess
     }
         public override bool isvalid(int x,int y)
     {
-        for(int c=1;c<8;c++)
+        for(int i=0;i<bishop.GetLength(0);i++)
         {
-        for(int i=0;i<rook.GetLength(0);i++)
-        {
-            for(int a=0;a<rook.GetLength(1);a++)
+            for(int a=0;a<bishop.GetLength(1);a++)
             {
-                if(rook[i][a]*c == rook[x][y])
+                if(bishop[i][a] == bishop[x][y])
                 {
                     return true;
                 }
 
             }
 
-        }
         }
         return false;
 
