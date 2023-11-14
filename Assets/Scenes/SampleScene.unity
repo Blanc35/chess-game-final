@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -123,6 +120,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &267253995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4846723839890726, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
+  m_PrefabInstance: {fileID: 1150248640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1243628173}
   m_LocalEulerAnglesHint: {x: 89.302, y: 0, z: 0}
 --- !u!1001 &1150248640
 PrefabInstance:
@@ -315,7 +317,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1243628173}
     m_Modifications:
     - target: {fileID: 1595888500303032, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
       propertyPath: m_Name
@@ -343,11 +345,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4846723839890726, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4846723839890726, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4846723839890726, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -364,44 +366,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1595888500303032, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2072941872}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
---- !u!1 &2072941871 stripped
+--- !u!1 &1243628172
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1595888500303032, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
-  m_PrefabInstance: {fileID: 1150248640}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2072941872
-MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072941871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbfa2e2bf66934a3bb57f03967431180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whitePawn: {fileID: -1262701387069464544, guid: 6653ddcbd4a2e453ba6e07f8931ce86c, type: 3}
-  whiteRook: {fileID: -1589170747893231585, guid: 55350a888e04c4e80aaa2960bea7e3c0, type: 3}
-  whiteKnight: {fileID: 2355287358175617388, guid: 522692d40a26d42aeb798b874778b35c, type: 3}
-  whiteBishop: {fileID: 8098815758207500705, guid: 8bc6354dcbfe34a3fba0b40d5887dd47, type: 3}
-  whiteQueen: {fileID: 7606471587361398595, guid: ff7e7084bc927405da871cf1faa802ab, type: 3}
-  whiteKing: {fileID: -7999001190076707314, guid: 973983e22257f4007b9b0bb5ccae1184, type: 3}
-  blackRook: {fileID: 6304487834006462752, guid: bcf19558551614c79a55a9e750ad43b1, type: 3}
-  blackKnight: {fileID: 6971158456201561294, guid: f4daf56a2ac5e44b889a2ead6ccc262a, type: 3}
-  blackBishop: {fileID: -6649260822388514345, guid: 6f3013651623b446c91ae9d7270ba7b5, type: 3}
-  blackQueen: {fileID: 4515993385731432754, guid: e9b85e3c5806d4152b0b5cb3158d2120, type: 3}
-  blackKing: {fileID: 6904054074720975183, guid: 8efc31579d9ab4990a3b6b97897f0183, type: 3}
-  blackPawn: {fileID: 413715389868009194, guid: 7302be28962c243678252e7c6255fdbc, type: 3}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243628173}
+  m_Layer: 0
+  m_Name: Board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243628173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243628172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.7, y: 0, z: 14.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 963194228}
+  - {fileID: 267253995}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1150248640}
+  - {fileID: 1243628173}

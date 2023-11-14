@@ -16,7 +16,12 @@ public class chessBoard : MonoBehaviour
     public chess blackQueen;    
     public chess blackKing; 
     public chess blackPawn; 
-     Vector2[,] boardSetup = new Vector2[8, 8];
+
+    Vector2[,] boardSetup = new Vector2[8, 8];
+    Vector2 gridSize = new Vector2(4.2f, 4.2f);
+    Vector3 originPosition = new Vector3(0.0f, 2.1f, 0.0f);
+    Vector3 chessAngle = new Vector3(180.0f, 0.0f, 0.0f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +29,7 @@ public class chessBoard : MonoBehaviour
         {
             for(int k=0;k<8;k++)
             {
-                boardSetup[k, i] = new Vector2(k, i);
+                boardSetup[k, i] = new Vector2(k, i) * gridSize;
             }
         }
 
@@ -68,8 +73,8 @@ public class chessBoard : MonoBehaviour
     void placement(chess piece, int x, int y)
     {
         Vector2 position = boardSetup[x, y];
-        piece.transform.position = new Vector3(position.x*3, 3.0f, position.y*3);
-        piece.transform.localEulerAngles = new Vector3(90, 0.0f, 0);
+        piece.transform.position = originPosition + new Vector3(position.x, 0.0f, position.y);
+        piece.transform.localEulerAngles = chessAngle;
     }
     void movements()
     {
