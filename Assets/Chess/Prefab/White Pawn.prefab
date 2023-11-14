@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4485704448486532}
   - component: {fileID: 33787832524096388}
   - component: {fileID: 23221764008116348}
+  - component: {fileID: -1262701387069464544}
   m_Layer: 0
   m_Name: White Pawn
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1352649277301394}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071069, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.03506964, y: 2.23, z: -1.61}
+  m_LocalPosition: {x: 7, y: 1, z: 0}
   m_LocalScale: {x: 24.847502, y: 24.847502, z: 24.847502}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,3 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1262701387069464544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352649277301394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7937703cd95ba47adb405e6039c9f395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
