@@ -14,6 +14,7 @@ public class King : chess
         new int[]{-1,-1},
         new int[]{-1,1},
         new int[]{1,-1},
+        new int[]{1,0},
         
     };
     // Start is called before the first frame update

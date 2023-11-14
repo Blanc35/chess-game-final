@@ -14,6 +14,7 @@ public class Queen : chess
         new int[]{-1,-1},
         new int[]{-1,1},
         new int[]{1,-1},
+        new int[]{1,0},
         
     };
     void Start()
