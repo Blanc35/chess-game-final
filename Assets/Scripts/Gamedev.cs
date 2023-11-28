@@ -17,17 +17,24 @@ public class Gamedev : MonoBehaviour
         
     }
     public chess[] moved;
+    int moves=0;
     public bool determineMove(chess a)
     {
         for(int i=0;i<moved.GetLength(0);i++)
         {
             if(a.gameObject == moved[i].gameObject)
             {
-                return false;
+                return true;
             }
 
         }
-        return true;
+        return false;
+
+    }
+    public void historyMoved(chess a)
+    {
+        moved[moves]=a;
+        moves++;
 
     }
 
