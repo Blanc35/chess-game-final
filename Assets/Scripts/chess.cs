@@ -20,7 +20,7 @@ public class chess : MonoBehaviour
         return false;
     }
 
-    enum chesspPieces
+   public enum chesspPieces
     {
         White,
         Black,

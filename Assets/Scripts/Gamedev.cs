@@ -37,5 +37,10 @@ public class Gamedev : MonoBehaviour
         moves++;
 
     }
+    public Player self;
+    public Player other;
+
+    public Player turns;
+    
 
 }
