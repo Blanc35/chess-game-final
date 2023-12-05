@@ -18,9 +18,9 @@ public class chessBoard : MonoBehaviour
     public chess blackPawn; 
 
     Vector2[,] boardSetup = new Vector2[8, 8];
-    Vector2 gridSize = new Vector2(4.2f, 4.2f);
-    Vector3 originPosition = new Vector3(0.0f, 2.1f, 0.0f);
-    Vector3 chessAngle = new Vector3(180.0f, 0.0f, 0.0f);
+    static readonly public Vector2 gridSize = new Vector2(4.2f, 4.2f);
+    static readonly public Vector3 originPosition = new Vector3(0.0f, 2.1f, 0.0f);
+    static readonly public Vector3 chessAngle = new Vector3(180.0f, 0.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()
@@ -88,4 +88,39 @@ public class chessBoard : MonoBehaviour
     {
 
     }
+
+    static public bool checkValidGrid2(Vector2Int grid2)
+    {
+       return (0 <= grid2.x && grid2.x < 8)
+       && (0 <= grid2.y && grid2.y < 8);
+    }
+
+    static public Vector2Int getValidGrid2(Vector2Int grid2)
+    {
+       int x = (grid2.x < 0 ? 0 : grid2.x);
+       x = (x >= 8 ? 7 : x);
+       int y = (grid2.y < 0 ? 0 : grid2.y);
+       y = (y >= 8 ? 7 : y);
+
+       return new Vector2Int(x, y);
+    }
+
+	static public string getBoardGridString (int index)
+	{
+		Vector2Int grid2 = getGrid2(index);
+		return char.ConvertFromUtf32 (grid2.y + 65) + "" + (grid2.x + 1);
+	}
+
+    static public int getGrid(Vector2Int grid2)
+    {
+        return grid2.x * 8 + grid2.y;
+    }
+
+    static public Vector2Int getGrid2(int index)
+    {
+        int x = index / 8;
+		int y = index % 8;
+        return new Vector2Int(x, y);
+    }
+
 }
