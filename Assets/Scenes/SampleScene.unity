@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99d2422387a8475fbebc640bc7c7b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chessBoardCtrl: {fileID: 4435162537959924208}
   highlightGridPrefab: {fileID: 5019381044756653208, guid: b5c6967f6cfe448b595dc349b2db9e07, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -507,6 +508,17 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 4846722689954791}
   m_SourcePrefab: {fileID: 100100000, guid: 9a505e0b77beb4d26b29ba406e1d1abf, type: 3}
+--- !u!114 &4435162537959924208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365154286002811934, guid: 9a505e0b77beb4d26b29ba406e1d1abf, type: 3}
+  m_PrefabInstance: {fileID: 4435162537959924207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146164670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfa2e2bf66934a3bb57f03967431180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

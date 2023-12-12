@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Gamedev : MonoBehaviour
 {
+    public chess[] moved;
+    int moves=0;
+
+    public Player self;
+    public Player other;
+
+    public Player turns;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +23,7 @@ public class Gamedev : MonoBehaviour
     {
         
     }
-    public chess[] moved;
-    int moves=0;
+
     public bool determineMove(chess a)
     {
         for(int i=0;i<moved.GetLength(0);i++)
@@ -36,11 +42,6 @@ public class Gamedev : MonoBehaviour
         moved[moves]=a;
         moves++;
 
-    }
-    public Player self;
-    public Player other;
-
-    public Player turns;
-    
+    } 
 
 }

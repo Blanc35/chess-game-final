@@ -17,7 +17,7 @@ public class chessBoard : MonoBehaviour
     public chess blackKing; 
     public chess blackPawn; 
 
-    Vector2[,] boardSetup = new Vector2[8, 8];
+    chess[,] boardChesses = new chess[8, 8];
     static readonly public Vector2 gridSize = new Vector2(4.2f, 4.2f);
     static readonly public Vector3 originPosition = new Vector3(0.0f, 2.1f, 0.0f);
     static readonly public Vector3 chessAngle = new Vector3(180.0f, 0.0f, 0.0f);
@@ -25,17 +25,9 @@ public class chessBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0;i<8;i++)
-        {
-            for(int k=0;k<8;k++)
-            {
-                boardSetup[k, i] = new Vector2(k, i) * gridSize;
-            }
-        }
 
-        startGame();
     }
-    void startGame()
+    public void startGame()
     {
         for(int i=0;i<8;i++)
         {
@@ -65,28 +57,33 @@ public class chessBoard : MonoBehaviour
         chess wqChess = Instantiate(whiteQueen.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
         placement(wqChess, 3,0);
     }   
+
     // Update is called once per frame
     void Update()
     {
         
     }
+
     void placement(chess piece, int x, int y)
     {
-        Vector2 position = boardSetup[x, y];
+        Vector2 position = new Vector2(x, y) * gridSize;
         piece.transform.position = originPosition + new Vector3(position.x, 0.0f, position.y);
         piece.transform.localEulerAngles = chessAngle;
-    }
-    void movements()
-    {
 
+        boardChesses[x, y] = piece;
     }
+
+    public void movements(chess piece, Vector2Int grid2)
+    {
+        Vector2Int startGrid2 = getGrid2(piece);
+        if(checkValidGrid2(startGrid2)) boardChesses[startGrid2.x, startGrid2.y] = null;
+        if(checkValidGrid2(grid2)) boardChesses[grid2.x, grid2.y] = piece;
+        placement(piece, grid2.x, grid2.y);
+    }
+
     void remove()
     {
         
-    }
-    void check()
-    {
-
     }
 
     static public bool checkValidGrid2(Vector2Int grid2)
@@ -123,4 +120,28 @@ public class chessBoard : MonoBehaviour
         return new Vector2Int(x, y);
     }
 
+    public chess getChess(Vector2Int grid2)
+    {
+        if (!checkValidGrid2(grid2))
+        {
+            return null;
+        }
+        return boardChesses[grid2.x, grid2.y];
+    }
+
+    public Vector2Int getGrid2(chess piece)
+    {
+        for (int i = 0; i < boardChesses.GetLength(0); i++) 
+        {
+            for (int j = 0; j < boardChesses.GetLength(1); j++)
+            {
+                if (boardChesses[i, j] == piece)
+                {
+                    return new Vector2Int(i, j);
+                }
+            }
+        }
+
+        return new Vector2Int(-1, -1);
+    }
 }

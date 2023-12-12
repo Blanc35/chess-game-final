@@ -25,8 +25,8 @@ public class chess : MonoBehaviour
         White,
         Black,
     }
-    chesspPieces mChesspPieces;
-    enum chessType{
+    public chesspPieces mChesspPieces;
+    public enum chessType{
 
         Pawn,
         Bishop,
@@ -37,7 +37,7 @@ public class chess : MonoBehaviour
         Queen,
 
     }
-    chessType mChessType;
+    public chessType mChessType;
     int[][] chessMove;
     
     int[][] rook = 
