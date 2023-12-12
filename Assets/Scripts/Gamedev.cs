@@ -11,11 +11,15 @@ public class Gamedev : MonoBehaviour
     public Player other;
 
     public Player turns;
+    public chessBoard ba;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        self=new Player("Bob", chess.chesspPieces.White);
+        other=new Player("Joe", chess.chesspPieces.Black);
+        turns=self;
+        ba.startGame();
     }
 
     // Update is called once per frame

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public chess[] eatan;
 
 
+
     public chess[] have;
 
     public int way;
@@ -27,6 +28,26 @@ public class Player : MonoBehaviour
         have =new chess[16] ;
         way = 1;
 
+    }
+    public void getEatan(chess a)
+    {
+        for(int i=0;i<eatan.GetLength(0);i++)
+        {
+            if(eatan[i]==null)
+            {
+                eatan[i]=a;
+            }
+        }
+    }
+        public void getHave(chess a)
+    {
+        for(int i=0;i<have.GetLength(0);i++)
+        {
+            if(have[i]==null)
+            {
+                have[i]=a;
+            }
+        }
     }
 
 
