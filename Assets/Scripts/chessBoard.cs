@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class chessBoard : MonoBehaviour
 {
-    public chess whitePawn; 
-    public chess whiteRook; 
-    public chess whiteKnight; 
-    public chess whiteBishop;
-    public chess whiteQueen;
-    public chess whiteKing; 
-    public chess blackRook; 
-    public chess blackKnight; 
-    public chess blackBishop; 
-    public chess blackQueen;    
-    public chess blackKing; 
-    public chess blackPawn; 
+    public GameObject whitePawn; 
+    public GameObject whiteRook; 
+    public GameObject whiteKnight; 
+    public GameObject whiteBishop;
+    public GameObject whiteQueen;
+    public GameObject whiteKing; 
+    public GameObject blackRook; 
+    public GameObject blackKnight; 
+    public GameObject blackBishop; 
+    public GameObject blackQueen;    
+    public GameObject blackKing; 
+    public GameObject blackPawn; 
+    GameObject[,] prefabs = new GameObject[2, 6];
 
     chess[,] boardChesses = new chess[8, 8];
     static readonly public Vector2 gridSize = new Vector2(4.2f, 4.2f);
@@ -31,47 +32,29 @@ public class chessBoard : MonoBehaviour
     {
         for(int i=0;i<8;i++)
         {
-            chess tmpChess = Instantiate(whitePawn.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-            placement(tmpChess, i, 1);
+            createChess(chess.chesspPieces.White, chess.chessType.Pawn, i, 1);
         }
+        createChess(chess.chesspPieces.White, chess.chessType.Rook, 0,0);
+        createChess(chess.chesspPieces.White, chess.chessType.Rook, 7,0);
+        createChess(chess.chesspPieces.White, chess.chessType.Knight, 1,0);
+        createChess(chess.chesspPieces.White, chess.chessType.Knight, 6,0);
+        createChess(chess.chesspPieces.White, chess.chessType.Bishop, 2,0);
+        createChess(chess.chesspPieces.White, chess.chessType.Bishop, 5,0);
+        createChess(chess.chesspPieces.White, chess.chessType.King, 4,0);
+        createChess(chess.chesspPieces.White, chess.chessType.Queen, 3,0);
+
         for(int i=0;i<8;i++)
         {
-            chess tmpChess = Instantiate(blackPawn.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-            placement(tmpChess, i, 6);
+            createChess(chess.chesspPieces.Black, chess.chessType.Pawn, i, 6);
         }
-
-        chess wr1Chess = Instantiate(whiteRook.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wr1Chess, 0,0);
-        chess wr2Chess = Instantiate(whiteRook.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wr2Chess, 7,0);
-        chess wn1Chess = Instantiate(whiteKnight.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wn1Chess, 1,0);
-        chess wn2Chess = Instantiate(whiteKnight.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wn2Chess, 6,0);
-        chess wb1Chess = Instantiate(whiteBishop.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wb1Chess, 2,0);
-        chess wb2Chess = Instantiate(whiteBishop.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wb2Chess, 5,0);
-        chess wkChess = Instantiate(whiteKing.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wkChess, 4,0);
-        chess wqChess = Instantiate(whiteQueen.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(wqChess, 3,0);
-        chess br1Chess = Instantiate(blackRook.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(br1Chess, 0,7);
-        chess br2Chess = Instantiate(blackRook.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(br2Chess, 7,7);
-        chess bn1Chess = Instantiate(blackKnight.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(bn1Chess, 1,7);
-        chess bn2Chess = Instantiate(blackKnight.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(bn2Chess, 6,7);
-        chess bb1Chess = Instantiate(blackBishop.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(bb1Chess, 2,7);
-        chess bb2Chess = Instantiate(blackBishop.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(bb2Chess, 5,7);
-        chess bkChess = Instantiate(blackKing.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(bkChess, 4,7);
-        chess bqChess = Instantiate(blackQueen.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
-        placement(bqChess, 3,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Rook, 0,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Rook, 7,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Knight, 1,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Knight, 6,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Bishop, 2,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Bishop, 5,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.King, 4,7);
+        createChess(chess.chesspPieces.Black, chess.chessType.Queen, 3,7);
     }   
 
     // Update is called once per frame
@@ -79,6 +62,45 @@ public class chessBoard : MonoBehaviour
     {
         
     }
+
+    public void Initialize()
+    {
+        prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Pawn] = whitePawn;
+        prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Bishop] = whiteBishop;
+        prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Knight] = whiteKnight;
+        prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Rook] = whiteRook;
+        prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.King] = whiteKing;
+        prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Queen] = whiteQueen;
+        prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.Pawn] = blackPawn;
+        prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.Bishop] = blackBishop;
+        prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.Knight] = blackKnight;
+        prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.Rook] = blackRook;
+        prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.King] = blackKing;
+        prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.Queen] = blackQueen;
+    }
+
+    void createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
+    {
+        GameObject createObject = Instantiate(prefabs[(int)color, (int)type], Vector3.zero, Quaternion.identity);
+        chess tmpChess = null;
+        switch (type)
+        {
+            case chess.chessType.Pawn: tmpChess = createObject.AddComponent<Pawn>(); break;
+            case chess.chessType.Bishop: tmpChess = createObject.AddComponent<Bishop>(); break;
+            case chess.chessType.Knight: tmpChess = createObject.AddComponent<Knight>(); break;
+            case chess.chessType.Rook: tmpChess = createObject.AddComponent<Rook>(); break;
+            case chess.chessType.King: tmpChess = createObject.AddComponent<King>(); break;
+            case chess.chessType.Queen: tmpChess = createObject.AddComponent<Queen>(); break;
+            default: break;
+        }
+        if(tmpChess != null)
+        {
+            tmpChess.mChesspPieces = color;
+            tmpChess.mChessType = type;
+            placement(tmpChess, x, y);
+        }
+    }
+
 
     void placement(chess piece, int x, int y)
     {

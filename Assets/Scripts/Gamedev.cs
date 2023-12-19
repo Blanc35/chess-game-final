@@ -19,6 +19,10 @@ public class Gamedev : MonoBehaviour
         self=new Player("Bob", chess.chesspPieces.White);
         other=new Player("Joe", chess.chesspPieces.Black);
         turns=self;
+
+        ChessController.instance.Initialize();
+
+        ba.Initialize();
         ba.startGame();
     }
 

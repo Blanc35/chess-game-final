@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class ChessController : MonoBehaviour
 {
+    static public ChessController instance;
     public chessBoard chessBoardCtrl;
     public GameObject highlightGridPrefab;
+    public GameObject highlightGridMovePrefab;
 
-    private GameObject highlightGrid;
+    private GameObject highlightSelectGrid;
+    private List<GameObject> highlightMoveGrid;
 
     private chess movingChess;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        chessBoardCtrl.startGame();
-
-        highlightGrid = Instantiate(highlightGridPrefab, grid2ToPoint(new Vector2Int(0, 0)), Quaternion.identity, gameObject.transform);
-        highlightGrid.SetActive(false);
+        // Initialize();
     }
 
     // Update is called once per frame
@@ -32,14 +37,14 @@ public class ChessController : MonoBehaviour
             Vector2Int grid2 = pointToGrid2(point);
             // Debug.Log(grid2);
             bool checkValid = chessBoard.checkValidGrid2(grid2);
-            highlightGrid.SetActive(checkValid);
-            HighlightBoard(chessBoard.getGrid(grid2));
+            highlightSelectGrid.SetActive(checkValid);
+            HighlightBoard(highlightSelectGrid, grid2);
 
             if (checkValid) 
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if(movingChess == null) EnterState(chessBoardCtrl.getChess(grid2));
+                    if(movingChess == null) EnterState(grid2);
                     else 
                     {
                         // TODO: Check chess rules and move
@@ -62,7 +67,7 @@ public class ChessController : MonoBehaviour
 		}
         else
         {
-            highlightGrid.SetActive(false);
+            highlightSelectGrid.SetActive(false);
         }
 
 	}
@@ -86,6 +91,16 @@ public class ChessController : MonoBehaviour
         return chessBoard.getValidGrid2(new Vector2Int(col, row));
     }
 
+    public void Initialize()
+    {
+        // chessBoardCtrl.startGame();
+
+        highlightSelectGrid = Instantiate(highlightGridPrefab, grid2ToPoint(new Vector2Int(0, 0)), Quaternion.identity, gameObject.transform);
+        highlightSelectGrid.SetActive(false);
+
+        highlightMoveGrid = new List<GameObject>();
+    }
+
     public void LogInfo(Vector2Int grid2)
     {
         LogInfo(chessBoardCtrl.getChess(grid2));
@@ -97,9 +112,33 @@ public class ChessController : MonoBehaviour
         + $"ChessType: {piece.mChessType} \n" : "Chess is null !";
     }
 
-    void HighlightBoard (int index)
+    void HighlightBoard (GameObject highlightObject, Vector2Int grid2)
 	{
-		highlightGrid.transform.position = grid2ToPoint(chessBoard.getGrid2(index));
+        if(highlightObject == null) return;
+		highlightObject.transform.position = grid2ToPoint(grid2);
+	}
+
+    void HighlightBoard (GameObject prefab, List<GameObject> listHighlightObject, List<Vector2Int> listGrid2)
+	{
+        if(prefab == null || listHighlightObject == null) return;
+Debug.Log(listGrid2.Count);
+        CancelHighlightBoard(listHighlightObject);
+        foreach (Vector2Int grid2 in listGrid2)
+        {
+            GameObject obj;
+            obj = Instantiate(prefab, grid2ToPoint(new Vector2Int(0, 0)), Quaternion.identity, gameObject.transform);    
+            listHighlightObject.Add(obj);
+            HighlightBoard(obj, grid2);
+            Debug.Log(grid2);
+        }
+	}
+
+    void CancelHighlightBoard (List<GameObject> listHighlightObject)
+	{
+        foreach (GameObject obj in listHighlightObject)
+        {
+            Destroy(obj);
+        }
 	}
 
     private void CancelMove()
@@ -107,6 +146,7 @@ public class ChessController : MonoBehaviour
         // this.enabled = false;
 
         // TODO: cancel moveable highlights
+        CancelHighlightBoard(highlightMoveGrid);
 
 
         // TODO: cancel selected effect
@@ -118,12 +158,21 @@ public class ChessController : MonoBehaviour
         // Debug.Log("CancelMove - " + LogInfo(movingChess));
     }
 
-    public void EnterState(chess piece)
+    public void EnterState(Vector2Int grid2)
     {
-        movingChess = piece;
+        movingChess = chessBoardCtrl.getChess(grid2);
         // this.enabled = true;
 
         // TODO: show moveable highlights
+        List<Vector2Int> moveableGrid2 = movingChess.getMoveable(grid2);
+        moveableGrid2.RemoveAll(x => !chessBoard.checkValidGrid2(x));
+
+        HighlightBoard(highlightGridMovePrefab, highlightMoveGrid, moveableGrid2);
+        
+        if (moveableGrid2.Count == 0)
+        {
+            CancelMove();
+        }
 
 
         // Debug.Log("EnterState - " + LogInfo(movingChess));
@@ -133,7 +182,7 @@ public class ChessController : MonoBehaviour
     {
         // this.enabled = false;
         movingChess = null;
-        highlightGrid.SetActive(false);
+        highlightSelectGrid.SetActive(false);
 
         // TODO: cancel selected effect
         
@@ -145,6 +194,7 @@ public class ChessController : MonoBehaviour
 
 
         // TODO: cancel moveable highlights
+        CancelHighlightBoard(highlightMoveGrid);
 
 
         // Debug.Log("ExitState - " + LogInfo(movingChess));
