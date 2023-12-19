@@ -96,15 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfa2e2bf66934a3bb57f03967431180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whitePawn: {fileID: 1352649277301394, guid: 6653ddcbd4a2e453ba6e07f8931ce86c, type: 3}
-  whiteRook: {fileID: 1536104987182252, guid: 55350a888e04c4e80aaa2960bea7e3c0, type: 3}
-  whiteKnight: {fileID: 1163459173247232, guid: 522692d40a26d42aeb798b874778b35c, type: 3}
-  whiteBishop: {fileID: 1892809951321136, guid: 8bc6354dcbfe34a3fba0b40d5887dd47, type: 3}
-  whiteQueen: {fileID: 1639620864090624, guid: ff7e7084bc927405da871cf1faa802ab, type: 3}
-  whiteKing: {fileID: 1273725991896454, guid: 973983e22257f4007b9b0bb5ccae1184, type: 3}
-  blackRook: {fileID: 1709358859266834, guid: bcf19558551614c79a55a9e750ad43b1, type: 3}
-  blackKnight: {fileID: 1291360291826688, guid: f4daf56a2ac5e44b889a2ead6ccc262a, type: 3}
-  blackBishop: {fileID: 1479989141987308, guid: 6f3013651623b446c91ae9d7270ba7b5, type: 3}
-  blackQueen: {fileID: 1275902455577708, guid: e9b85e3c5806d4152b0b5cb3158d2120, type: 3}
-  blackKing: {fileID: 1381633088875808, guid: 8efc31579d9ab4990a3b6b97897f0183, type: 3}
-  blackPawn: {fileID: 1031636751254628, guid: 7302be28962c243678252e7c6255fdbc, type: 3}
+  whitePawn: {fileID: 1506099060426903830, guid: 44ddbe82a4c344ed7bbbbf1e85c6cf93, type: 3}
+  whiteRook: {fileID: 3957488322653609441, guid: 8a914e6e991184d3abcf11c0b59a7525, type: 3}
+  whiteKnight: {fileID: 471001497196871303, guid: 9e66cf134315544d5af5ded1820fb2f2, type: 3}
+  whiteBishop: {fileID: 7288809016883636968, guid: f47c9c8826d144fc5a44641b440a2715, type: 3}
+  whiteQueen: {fileID: 6661817453835493987, guid: 67ac3b1cd41ad413d9da3a625e20793b, type: 3}
+  whiteKing: {fileID: 9127065446682520665, guid: 690c13161cde04f16ae904e294f2b11d, type: 3}
+  blackRook: {fileID: 5703932410391128312, guid: 91fcee1ebc34643ea80aff135a299781, type: 3}
+  blackKnight: {fileID: 7532103358278390378, guid: e2c5fe592621e4875ad6a53beb19889a, type: 3}
+  blackBishop: {fileID: 5691613125568065353, guid: 84cc79b1b86324c149d89db6cd4bcd72, type: 3}
+  blackQueen: {fileID: 4001087649711813879, guid: efbdeb96072464e2082618830ee68080, type: 3}
+  blackKing: {fileID: 1325671985151323500, guid: e2464b98cf8604d99bbaadfbd74e4934, type: 3}
+  blackPawn: {fileID: 2465624401773240106, guid: 21f86ff831d9a452f87e096419c368f8, type: 3}
