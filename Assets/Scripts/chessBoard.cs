@@ -56,6 +56,22 @@ public class chessBoard : MonoBehaviour
         placement(wkChess, 4,0);
         chess wqChess = Instantiate(whiteQueen.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
         placement(wqChess, 3,0);
+        chess br1Chess = Instantiate(blackRook.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(br1Chess, 0,7);
+        chess br2Chess = Instantiate(blackRook.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(br2Chess, 7,7);
+        chess bn1Chess = Instantiate(blackKnight.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(bn1Chess, 1,7);
+        chess bn2Chess = Instantiate(blackKnight.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(bn2Chess, 6,7);
+        chess bb1Chess = Instantiate(blackBishop.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(bb1Chess, 2,7);
+        chess bb2Chess = Instantiate(blackBishop.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(bb2Chess, 5,7);
+        chess bkChess = Instantiate(blackKing.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(bkChess, 4,7);
+        chess bqChess = Instantiate(blackQueen.gameObject, Vector3.zero, Quaternion.identity).GetComponent<chess>();
+        placement(bqChess, 3,7);
     }   
 
     // Update is called once per frame
