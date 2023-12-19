@@ -21,7 +21,7 @@ public class chessBoard : MonoBehaviour
     chess[,] boardChesses = new chess[8, 8];
     static readonly public Vector2 gridSize = new Vector2(4.2f, 4.2f);
     static readonly public Vector3 originPosition = new Vector3(0.0f, 2.1f, 0.0f);
-    static readonly public Vector3 chessAngle = new Vector3(180.0f, 0.0f, 0.0f);
+    static readonly public Vector3 chessAngle = new Vector3(90.0f, 0.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()
