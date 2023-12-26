@@ -9,10 +9,11 @@ public class ChessController : MonoBehaviour
     public GameObject highlightGridPrefab;
     public GameObject highlightGridMovePrefab;
 
-    private GameObject highlightSelectGrid;
-    private List<GameObject> highlightMoveGrid;
+    GameObject highlightSelectGrid;
+    List<GameObject> highlightMoveGrid;
 
-    private chess movingChess;
+    chess movingChess;
+    List<Vector2Int> moveableGrid2;
 
     void Awake()
     {
@@ -45,9 +46,14 @@ public class ChessController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     if(movingChess == null) EnterState(grid2);
+                    else if (movingChess == chessBoardCtrl.getChess(grid2)) CancelMove();
                     else 
                     {
                         // TODO: Check chess rules and move
+                        if (!moveableGrid2.Contains(grid2))
+                        {
+                            return;
+                        }
 
 
                         if (chessBoardCtrl.getChess(grid2) == null)
@@ -99,17 +105,8 @@ public class ChessController : MonoBehaviour
         highlightSelectGrid.SetActive(false);
 
         highlightMoveGrid = new List<GameObject>();
-    }
 
-    public void LogInfo(Vector2Int grid2)
-    {
-        LogInfo(chessBoardCtrl.getChess(grid2));
-    }
-
-    public string LogInfo(chess piece)
-    {
-        return piece ? $"ChessColor: {piece.mChesspPieces} \n"
-        + $"ChessType: {piece.mChessType} \n" : "Chess is null !";
+        moveableGrid2 = new List<Vector2Int>();
     }
 
     void HighlightBoard (GameObject highlightObject, Vector2Int grid2)
@@ -121,7 +118,7 @@ public class ChessController : MonoBehaviour
     void HighlightBoard (GameObject prefab, List<GameObject> listHighlightObject, List<Vector2Int> listGrid2)
 	{
         if(prefab == null || listHighlightObject == null) return;
-Debug.Log(listGrid2.Count);
+// Debug.Log(listGrid2.Count);
         CancelHighlightBoard(listHighlightObject);
         foreach (Vector2Int grid2 in listGrid2)
         {
@@ -129,7 +126,7 @@ Debug.Log(listGrid2.Count);
             obj = Instantiate(prefab, grid2ToPoint(new Vector2Int(0, 0)), Quaternion.identity, gameObject.transform);    
             listHighlightObject.Add(obj);
             HighlightBoard(obj, grid2);
-            Debug.Log(grid2);
+            // Debug.Log(grid2);
         }
 	}
 
@@ -144,12 +141,14 @@ Debug.Log(listGrid2.Count);
     private void CancelMove()
     {
         // this.enabled = false;
+        // clear current moving chess
+        movingChess = null;
 
-        // TODO: cancel moveable highlights
+        // cancel moveable highlights
         CancelHighlightBoard(highlightMoveGrid);
 
-
-        // TODO: cancel selected effect
+        // cancel selected effect
+        highlightSelectGrid.SetActive(false);
 
 
         // TODO: can select
@@ -163,12 +162,15 @@ Debug.Log(listGrid2.Count);
         movingChess = chessBoardCtrl.getChess(grid2);
         // this.enabled = true;
 
-        // TODO: show moveable highlights
-        List<Vector2Int> moveableGrid2 = movingChess.getMoveable(grid2);
+        // get moveable
+        moveableGrid2 = movingChess.getMoveable(grid2);
         moveableGrid2.RemoveAll(x => !chessBoard.checkValidGrid2(x));
+        moveableGrid2.RemoveAll(x => Gamedev.instance.isFriendlyChess(x));
 
+        // show moveable highlights
         HighlightBoard(highlightGridMovePrefab, highlightMoveGrid, moveableGrid2);
         
+        // check is any moveable
         if (moveableGrid2.Count == 0)
         {
             CancelMove();
@@ -181,10 +183,12 @@ Debug.Log(listGrid2.Count);
     void ExitState()
     {
         // this.enabled = false;
-        movingChess = null;
-        highlightSelectGrid.SetActive(false);
 
-        // TODO: cancel selected effect
+        // clear current moving chess
+        movingChess = null;
+
+        // cancel selected effect
+        highlightSelectGrid.SetActive(false);
         
 
         // TODO: NextPlayer
@@ -193,7 +197,7 @@ Debug.Log(listGrid2.Count);
         // TODO: can select
 
 
-        // TODO: cancel moveable highlights
+        // cancel moveable highlights
         CancelHighlightBoard(highlightMoveGrid);
 
 
@@ -203,11 +207,11 @@ Debug.Log(listGrid2.Count);
 
     public void Move(chess piece, Vector2Int grid2)
     {
-        // TODO: check pawn moved
-        // if (piece.mChessType == chess.chessType.Pawn && !determineMove(piece))
-        // {
-        //     historyMoved(piece);
-        // }
+        // check pawn moved
+        if (piece.mChessType == chess.chessType.Pawn && !Gamedev.instance.determineMove(piece))
+        {
+            Gamedev.instance.historyMoved(piece);
+        }
 
         chessBoardCtrl.movements(piece, grid2);
     }

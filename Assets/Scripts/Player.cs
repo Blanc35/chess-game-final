@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
     // Start is called before the first frame update
     public string userName;
@@ -39,16 +39,41 @@ public class Player : MonoBehaviour
             }
         }
     }
-        public void getHave(chess a)
+    public void recordHave(chess a)
     {
         for(int i=0;i<have.GetLength(0);i++)
         {
             if(have[i]==null)
             {
                 have[i]=a;
+                break;
             }
         }
     }
+
+    public bool getHave(chess a)
+    {
+        for(int i=0;i<have.GetLength(0);i++)
+        {
+            if(a == have[i] && have[i].mChesspPieces == a.mChesspPieces && have[i].mChessType == a.mChessType)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // public bool getHave(Vector2Int grid2)
+    // {
+    //     for(int i=0;i<have.GetLength(0);i++)
+    //     {
+    //         if(have[i].mChesspPieces == a.mChesspPieces && have[i].mChessType == a.mChessType)
+    //         {
+    //             return true;
+    //         }
+    //     }
+    //     return true;
+    // }
 
 
 

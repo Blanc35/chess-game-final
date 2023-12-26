@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pawn : chess
 {
-    Gamedev gamedev;
     int[][] pawn =
 {
         new int[]{0,1},
@@ -31,7 +30,7 @@ public class Pawn : chess
             {
                 if (pawn[i][a] == pawn[x][y])
                 {
-                    if (gamedev.determineMove(this))
+                    if (Gamedev.instance.determineMove(this))
                     {
                         return true;
                     }
@@ -54,23 +53,25 @@ public class Pawn : chess
         }
         return false;
     }
-           public override List<Vector2Int> getMoveable(Vector2Int grid2)
+    public override List<Vector2Int> getMoveable(Vector2Int grid2)
     {
         List<Vector2Int> moveable = new List<Vector2Int>();
 
         int[][] directions = pawn;
-        for(int dir = 0; dir < directions.GetLength(0); dir++)
+        int dirLength = (Gamedev.instance.determineMove(this) ? 1 : 2);
+        for(int dir = 0; dir < dirLength; dir++)
         {
             for (int i = 1; i < 2; i++)
             {
                 if(mChesspPieces== chesspPieces.Black)
                 {
-                Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i* directions[dir][0], grid2.y + i * -1 * directions[dir][1]);
-                moveable.Add(moveableGrid2);
+                    Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i* directions[dir][0], grid2.y + i * -1 * directions[dir][1]);
+                    moveable.Add(moveableGrid2);
                 }
-                else{
-                                    Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i * directions[dir][0], grid2.y + i * directions[dir][1]);
-                moveable.Add(moveableGrid2);
+                else
+                {
+                    Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i * directions[dir][0], grid2.y + i * directions[dir][1]);
+                    moveable.Add(moveableGrid2);
                 }
             }
         }

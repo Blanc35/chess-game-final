@@ -79,7 +79,7 @@ public class chessBoard : MonoBehaviour
         prefabs[(int)chess.chesspPieces.Black, (int)chess.chessType.Queen] = blackQueen;
     }
 
-    void createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
+    public chess createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
     {
         GameObject createObject = Instantiate(prefabs[(int)color, (int)type], Vector3.zero, Quaternion.identity);
         chess tmpChess = null;
@@ -99,6 +99,8 @@ public class chessBoard : MonoBehaviour
             tmpChess.mChessType = type;
             placement(tmpChess, x, y);
         }
+
+        return tmpChess;
     }
 
 
