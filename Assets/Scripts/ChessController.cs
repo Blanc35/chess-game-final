@@ -63,8 +63,8 @@ public class ChessController : MonoBehaviour
                         else
                         {
                             // TODO: CapturePieceAt
-                    
                             Move(movingChess, grid2);
+                            Gamedev.instance.eat(chessBoardCtrl.getChess(grid2));
                         }
                         ExitState();
                     }

@@ -132,6 +132,19 @@ public class Gamedev : MonoBehaviour
         for(int i = 0;i < player.have.GetLength(0);i++) log += $"have: [i]: {player.have[i]} \n";
         return log;
     }
+    public void changePlayer()
+    {
+        if(turns==self)
+        {
+            turns=other;
+        }
+        else
+        {
+        
+            turns=self;
+        }
+
+    }
 
     public string getInfo(chessBoard chessBoardCtrl)
     {
@@ -155,6 +168,11 @@ public class Gamedev : MonoBehaviour
         string log = $"ChessColor: {piece.mChesspPieces} \n";
         log += $"ChessType: {piece.mChessType} \n";
         return log;
+    }
+    public void eat(chess piece)
+    {
+        turns.getEatan(piece);
+        Destroy(piece);
     }
 
 }
