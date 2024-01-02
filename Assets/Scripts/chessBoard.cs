@@ -16,12 +16,13 @@ public class chessBoard : MonoBehaviour
     public GameObject blackQueen;    
     public GameObject blackKing; 
     public GameObject blackPawn; 
+    GameObject chessRoot;
     GameObject[,] prefabs = new GameObject[2, 6];
 
     chess[,] boardChesses = new chess[8, 8];
-    static readonly public Vector2 gridSize = new Vector2(4.2f, 4.2f);
-    static readonly public Vector3 originPosition = new Vector3(0.0f, 2.1f, 0.0f);
-    static readonly public Vector3 chessAngle = new Vector3(90.0f, 0.0f, 0.0f);
+    public Vector2 gridSize;
+    public Vector3 originPosition;
+    public Vector3 chessAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,7 @@ public class chessBoard : MonoBehaviour
 
     public void Initialize()
     {
+        chessRoot = new GameObject("ChessRoot");
         prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Pawn] = whitePawn;
         prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Bishop] = whiteBishop;
         prefabs[(int)chess.chesspPieces.White, (int)chess.chessType.Knight] = whiteKnight;
@@ -81,7 +83,7 @@ public class chessBoard : MonoBehaviour
 
     public chess createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
     {
-        GameObject createObject = Instantiate(prefabs[(int)color, (int)type], Vector3.zero, Quaternion.identity);
+        GameObject createObject = Instantiate(prefabs[(int)color, (int)type], Vector3.zero, Quaternion.identity, chessRoot.transform);
         chess tmpChess = null;
         switch (type)
         {

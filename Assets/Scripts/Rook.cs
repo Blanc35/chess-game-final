@@ -52,7 +52,11 @@ public class Rook : chess
             for (int i = 1; i < 8; i++)
             {
                 Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i * directions[dir][0], grid2.y + i * directions[dir][1]);
+                if(Gamedev.instance.isFriendlyChess(moveableGrid2)) break; 
+
                 moveable.Add(moveableGrid2);
+                
+                if(Gamedev.instance.ba.getChess(moveableGrid2) != null) break;
             }
         }
 

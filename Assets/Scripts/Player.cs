@@ -55,6 +55,8 @@ public class Player
     {
         for(int i=0;i<have.GetLength(0);i++)
         {
+            if(!have[i]) continue;
+
             if(a == have[i] && have[i].mChesspPieces == a.mChesspPieces && have[i].mChessType == a.mChessType)
             {
                 return true;

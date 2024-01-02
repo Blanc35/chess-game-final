@@ -44,5 +44,48 @@ public class chess : MonoBehaviour
     }
     public chessType mChessType;
     int[][] chessMove;
+
+    public string getNickname()
+    {
+        List<string> listName = new List<string>();
+        switch(mChesspPieces)
+        {
+            case chess.chesspPieces.White:
+                listName.Add("W");
+                break;
+            case chess.chesspPieces.Black:
+                listName.Add("B");
+                break;
+            default:
+                listName.Add("");
+                break;
+        }
+        switch(mChessType)
+        {
+            case chess.chessType.Pawn:
+                listName.Add("P");
+                break;
+            case chess.chessType.Rook:
+                listName.Add("R");
+                break;
+            case chess.chessType.Knight:
+                listName.Add("N");
+                break;
+            case chess.chessType.Bishop:
+                listName.Add("B");
+                break;
+            case chess.chessType.King:
+                listName.Add("K");
+                break;
+            case chess.chessType.Queen:
+                listName.Add("Q");
+                break;
+            default:
+                listName.Add("");
+                break;
+        }
+
+        return string.Join("-", listName);
+    }
 }
 

@@ -38,15 +38,18 @@ public class ChessController : MonoBehaviour
             Vector2Int grid2 = pointToGrid2(point);
             // Debug.Log(grid2);
             bool checkValid = chessBoard.checkValidGrid2(grid2);
-            highlightSelectGrid.SetActive(checkValid);
             HighlightBoard(highlightSelectGrid, grid2);
+            highlightSelectGrid.SetActive(checkValid);
 
             if (checkValid) 
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    chess targetChess = chessBoardCtrl.getChess(grid2);
+                    // Debug.Log($"movingChess: {Gamedev.instance.getInfo(movingChess)}, targetChess: {Gamedev.instance.getInfo(targetChess)}");
+                    
                     if(movingChess == null) EnterState(grid2);
-                    else if (movingChess == chessBoardCtrl.getChess(grid2)) CancelMove();
+                    else if (movingChess == targetChess) CancelMove();
                     else 
                     {
                         // TODO: Check chess rules and move
@@ -56,15 +59,16 @@ public class ChessController : MonoBehaviour
                         }
 
 
-                        if (chessBoardCtrl.getChess(grid2) == null)
+                        if (targetChess == null)
                         {
                             Move(movingChess, grid2);
                         }
                         else
                         {
                             // TODO: CapturePieceAt
+                            Gamedev.instance.eat(targetChess);
+
                             Move(movingChess, grid2);
-                            Gamedev.instance.eat(chessBoardCtrl.getChess(grid2));
                         }
                         ExitState();
                     }
@@ -85,15 +89,15 @@ public class ChessController : MonoBehaviour
 
     static public Vector3 grid2ToPoint(Vector2Int gridPoint)
     {
-        float x = chessBoard.gridSize.x * gridPoint.x;
-        float z = chessBoard.gridSize.y * gridPoint.y;
-        return chessBoard.originPosition + new Vector3(x, 0, z);
+        float x = Gamedev.instance.ba.gridSize.x * gridPoint.x;
+        float z = Gamedev.instance.ba.gridSize.y * gridPoint.y;
+        return Gamedev.instance.ba.originPosition + new Vector3(x, 0, z);
     }
 
     static public Vector2Int pointToGrid2(Vector3 point)
     {
-        int col = Mathf.FloorToInt((chessBoard.gridSize.x / 2 + point.x) / chessBoard.gridSize.x);
-        int row = Mathf.FloorToInt((chessBoard.gridSize.y / 2 + point.z) / chessBoard.gridSize.y);
+        int col = Mathf.FloorToInt((Gamedev.instance.ba.gridSize.x / 2 + point.x) / Gamedev.instance.ba.gridSize.x);
+        int row = Mathf.FloorToInt((Gamedev.instance.ba.gridSize.y / 2 + point.z) / Gamedev.instance.ba.gridSize.y);
         return chessBoard.getValidGrid2(new Vector2Int(col, row));
     }
 
@@ -101,7 +105,9 @@ public class ChessController : MonoBehaviour
     {
         // chessBoardCtrl.startGame();
 
-        highlightSelectGrid = Instantiate(highlightGridPrefab, grid2ToPoint(new Vector2Int(0, 0)), Quaternion.identity, gameObject.transform);
+        Vector2Int highlightGrid2 = new Vector2Int(0, 0);
+        highlightSelectGrid = Instantiate(highlightGridPrefab, grid2ToPoint(highlightGrid2), Quaternion.identity, gameObject.transform);
+        HighlightBoard(highlightSelectGrid, highlightGrid2);
         highlightSelectGrid.SetActive(false);
 
         highlightMoveGrid = new List<GameObject>();
@@ -112,7 +118,7 @@ public class ChessController : MonoBehaviour
     void HighlightBoard (GameObject highlightObject, Vector2Int grid2)
 	{
         if(highlightObject == null) return;
-		highlightObject.transform.position = grid2ToPoint(grid2);
+		highlightObject.transform.position = grid2ToPoint(grid2) + new Vector3(0, -0.1f, 0);
 	}
 
     void HighlightBoard (GameObject prefab, List<GameObject> listHighlightObject, List<Vector2Int> listGrid2)
@@ -159,7 +165,10 @@ public class ChessController : MonoBehaviour
 
     public void EnterState(Vector2Int grid2)
     {
-        movingChess = chessBoardCtrl.getChess(grid2);
+        chess selectedChess= chessBoardCtrl.getChess(grid2);
+        if(selectedChess == null || !Gamedev.instance.isChessBelongToCurrentPlayer(selectedChess)) return;
+
+        movingChess = selectedChess;
         // this.enabled = true;
 
         // get moveable
@@ -192,6 +201,7 @@ public class ChessController : MonoBehaviour
         
 
         // TODO: NextPlayer
+        Gamedev.instance.changePlayer();
 
         
         // TODO: can select
