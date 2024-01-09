@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine;
 public class Gamedev : MonoBehaviour
 {
     static public Gamedev instance;
+
+    float fixedTimer = 0.0f;
+
+    public float[] considerSec = { 60.0f, 5*60.0f, 10*60.0f }; 
 
     public List<chess> moved;
 
@@ -27,19 +32,43 @@ public class Gamedev : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initialize();
+        startGame();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(debugMode)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log(getInfo(self));
+                Debug.Log(getInfo(other));
+                Debug.Log(getInfo(ba));
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        countDownTimer(ref fixedTimer, 1.0f, countDownConsiderTime);
+    }
+
+    void initialize()
+    {
         // Initialize game system
+        fixedTimer = 0.0f;
+
         moved = new List<chess>();
 
         playerColor = new Player[2];
         playerColor[(int)chess.chesspPieces.White] = new Player("playerName", chess.chesspPieces.White);
         playerColor[(int)chess.chesspPieces.Black] = new Player("playerName", chess.chesspPieces.Black);
-        
-        self=new Player("Bob", chess.chesspPieces.White);
-        other=new Player("Joe", chess.chesspPieces.Black);
-        turns=null;
 
-        playerColor[(int)chess.chesspPieces.White] = self;
-        playerColor[(int)chess.chesspPieces.Black] = other;
+        self = null;
+        other = null;
+        turns = null;
 
         ChessController.instance.Initialize();
 
@@ -48,8 +77,29 @@ public class Gamedev : MonoBehaviour
         // ba.originPosition = new Vector3(0.0f, 2.1f, 0.0f);
         // ba.chessAngle = new Vector3(90.0f, 0.0f, 0.0f);
 
-        // Create white chess
+        // UI initialize
+        uiController.Initialize();
+        // TODO: set consider time ui menu
+
+    }
+
+    void startGame()
+    {
+        // configure player color
         chess.chesspPieces chessColor = chess.chesspPieces.White;
+        self = playerColor[(int)chessColor] = new Player("Bob", chessColor);
+        chessColor = chess.chesspPieces.Black;
+        other = playerColor[(int)chessColor] = new Player("Joe", chessColor);
+        
+        // TODO: get ui consider timer selected
+        int tempIndex = 0;
+        // configure considerTime
+        self.considerTime = considerSec[tempIndex];
+        other.considerTime = considerSec[tempIndex];
+
+        // configure chessboard
+        // Create white chess
+        chessColor = chess.chesspPieces.White;
         for(int i=0;i<8;i++)
         {
             createChess(chessColor, chess.chessType.Pawn, i, 1);
@@ -78,30 +128,16 @@ public class Gamedev : MonoBehaviour
         createChess(chessColor, chess.chessType.King, 4,7);
         createChess(chessColor, chess.chessType.Queen, 3,7);
 
-
-        // UI initialize
-        uiController.Initialize();
+        // configure player info
         setPlayerName(self);
         setPlayerTurn(self, false);
+        setPlayerConsiderTime(self);
         setPlayerName(other);
         setPlayerTurn(other, false);
+        setPlayerConsiderTime(other);
 
-
+        // first player
         changePlayer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(debugMode)
-        {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log(getInfo(self));
-                Debug.Log(getInfo(other));
-                Debug.Log(getInfo(ba));
-            }
-        }
     }
 
     public void createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
@@ -150,6 +186,12 @@ public class Gamedev : MonoBehaviour
         return piece && turns.color == piece.mChesspPieces && turns.getHave(piece);
     }
 
+    public string getConsiderTimeFormate(float seconds)
+    {       
+        TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
+        return timeSpan.ToString("mm':'ss");
+    }
+
     public string getInfo(Player player)
     {
         string log = $"Name: {player.userName} \n";
@@ -181,6 +223,15 @@ public class Gamedev : MonoBehaviour
         if(!piece) return "Chess is null !";
         string log = $"Nickname: {piece.getNickname()}";
         return log;
+    }
+
+    public void checkWinner()
+    {       
+        if(turns == null) return;
+
+        // TODO: check current player capture king, then current player win
+
+        // TODO: check current player time up, then current player lose
     }
 
     public void changePlayer()
@@ -239,5 +290,41 @@ public class Gamedev : MonoBehaviour
         if(uiPlayerInfo == null) return;
 
         uiPlayerInfo.turnIndicator.enabled = isTurn;
+    }
+
+    void setPlayerConsiderTime(Player player)
+    {
+        UiPlayerInfo uiPlayerInfo = uiController.getSelfPlayer(getPlayerIndex(player));
+        if(uiPlayerInfo == null) return;
+        
+        uiPlayerInfo.considerTime.text = getConsiderTimeFormate(player.considerTime);
+    }
+
+    void countDownTimer(ref float timer, float seconds, Action<float> action = null)
+    {       
+        float now = Time.fixedTime;
+        if(now - timer >= seconds) 
+        {
+            timer = now;
+            action?.Invoke(seconds);
+        }
+    }
+
+    void countDownConsiderTime(float delay)
+    {       
+        if(turns == null) return;
+        turns.considerTime -= delay;
+        turns.considerTime = turns.considerTime < 0 ? 0 : turns.considerTime;
+        setPlayerConsiderTime(turns);
+    }
+
+    public void AddMoveHistory(HalfMove halfMove)
+    {
+        string msg = halfMove.ToAlgebraicNotation();
+        Debug.LogWarning(msg);
+        if(uiController.debugMoveHistory) 
+        {
+            uiController.debugMoveHistory.text += msg + "\n";
+        }
     }
 }

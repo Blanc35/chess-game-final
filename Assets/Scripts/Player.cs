@@ -7,6 +7,7 @@ public class Player
     // Start is called before the first frame update
     public string userName;
     public int rating;
+    public float considerTime;
 
     public chess.chesspPieces color;
 

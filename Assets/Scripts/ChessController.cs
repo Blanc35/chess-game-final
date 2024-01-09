@@ -58,17 +58,22 @@ public class ChessController : MonoBehaviour
                             return;
                         }
 
-
                         if (targetChess == null)
                         {
+                            // TODO: move history
+                            Gamedev.instance.AddMoveHistory(new HalfMove(movingChess, new Movement(chessBoardCtrl.getGrid2(movingChess), grid2), false, false));
                             Move(movingChess, grid2);
                         }
                         else
                         {
+                            // TODO: Check checkmate rules and history
+                            Gamedev.instance.AddMoveHistory(new HalfMove(movingChess, new Movement(chessBoardCtrl.getGrid2(movingChess), grid2), true, false));
+
                             // TODO: CapturePieceAt
                             Gamedev.instance.eat(targetChess);
 
                             Move(movingChess, grid2);
+
                         }
                         ExitState();
                     }

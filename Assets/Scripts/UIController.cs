@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
 
     [Tooltip("DebugSection")]
     public bool debugMode;
+    public TextMeshProUGUI debugMoveHistory;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,8 @@ public class UIController : MonoBehaviour
         {
             info.bindComponents();
         }
+
+        debugMoveHistory.text = "";
     }
 
 
@@ -75,6 +78,7 @@ public class UiPlayerInfo
     public RectTransform rectTrans;
     public TextMeshProUGUI name {get; private set;}
     public Image turnIndicator {get; private set;}
+    public TextMeshProUGUI considerTime {get; private set;}
 
     public void bindComponents()
     {
@@ -82,5 +86,6 @@ public class UiPlayerInfo
 
         name = rectTrans.Find("DisplayName").GetComponent<TextMeshProUGUI>();
         turnIndicator = rectTrans.Find("ImageTurn").GetComponent<Image>();
+        considerTime = rectTrans.Find("considerTime").GetComponent<TextMeshProUGUI>();
     }
 }

@@ -146,8 +146,17 @@ public class chessBoard : MonoBehaviour
 
 	static public string getBoardGridString (int index)
 	{
-		Vector2Int grid2 = getGrid2(index);
-		return char.ConvertFromUtf32 (grid2.y + 65) + "" + (grid2.x + 1);
+		return getBoardGridString(getGrid2(index));
+	}
+
+    static public string getBoardGridString (Vector2Int grid2)
+	{
+		return checkValidGrid2(grid2) ? getBoardCodeString(grid2.x) + "" + (grid2.y + 1) : "invalid";
+	}
+
+    static public string getBoardCodeString (int index)
+	{
+		return char.ConvertFromUtf32 (index + 65);
 	}
 
     static public int getGrid(Vector2Int grid2)
