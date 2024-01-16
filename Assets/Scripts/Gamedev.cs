@@ -197,8 +197,8 @@ public class Gamedev : MonoBehaviour
         string log = $"Name: {player.userName} \n";
         log += $"rating: {player.rating} \n";
         log += $"color: {player.color} \n";
-        for(int i = 0;i < player.eatan.GetLength(0);i++) log += $"eatan: [{i}]: {player.eatan[i]} \n";
-        for(int i = 0;i < player.have.GetLength(0);i++) log += $"have: [{i}]: {player.have[i]} \n";
+        for(int i = 0;i < player.eatan.GetLength(0);i++) log += $"eatan: [{i}]: {player.eatan[i]?.mChessType} \n";
+        for(int i = 0;i < player.have.GetLength(0);i++) log += $"have: [{i}]: {player.have[i]?.mChessType} \n";
         return log;
     }
 
@@ -230,8 +230,24 @@ public class Gamedev : MonoBehaviour
         if(turns == null) return;
 
         // TODO: check current player capture king, then current player win
+        if(turns.getAte(chess.chessType.King))
+        {
+            Debug.LogError(turns.userName+"Win");
+        }
 
         // TODO: check current player time up, then current player lose
+        if(turns.considerTime<=0)
+        {
+            if(turns!=self)
+            {
+                Debug.Log(self.userName+"Win");
+            }
+            else
+            {
+                Debug.Log(other.userName+"Win");
+            }
+
+        }
     }
 
     public void changePlayer()
@@ -265,6 +281,8 @@ public class Gamedev : MonoBehaviour
 
         turns.getEatan(piece);
         Destroy(piece.gameObject);
+
+        checkWinner();
     }
 
     int getPlayerIndex(Player player)
@@ -316,6 +334,7 @@ public class Gamedev : MonoBehaviour
         turns.considerTime -= delay;
         turns.considerTime = turns.considerTime < 0 ? 0 : turns.considerTime;
         setPlayerConsiderTime(turns);
+        checkWinner();
     }
 
     public void AddMoveHistory(HalfMove halfMove)

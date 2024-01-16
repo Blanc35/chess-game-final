@@ -22,31 +22,47 @@ public class Player
 
     public Player(string a, chess.chesspPieces c)
     {
-        userName=a;
-        color=c;
+        userName = a;
+        color = c;
         rating = 0;
         eatan = new chess[16];
-        have =new chess[16] ;
+        have = new chess[16];
         way = 1;
 
     }
     public void getEatan(chess a)
     {
-        for(int i=0;i<eatan.GetLength(0);i++)
+        Debug.LogError(a);
+        for (int i = 0; i < eatan.GetLength(0); i++)
         {
-            if(eatan[i]==null)
+            if (eatan[i] == null)
             {
-                eatan[i]=a;
+                eatan[i] = a;
+                break;
             }
         }
     }
+
+    public bool getAte(chess.chessType chessType)
+    {
+        for (int i = 0; i < eatan.GetLength(0); i++)
+        {
+            if (eatan[i] != null && chessType == eatan[i].mChessType)
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     public void recordHave(chess a)
     {
-        for(int i=0;i<have.GetLength(0);i++)
+        for (int i = 0; i < have.GetLength(0); i++)
         {
-            if(have[i]==null)
+            if (have[i] == null)
             {
-                have[i]=a;
+                have[i] = a;
                 break;
             }
         }
@@ -54,11 +70,11 @@ public class Player
 
     public bool getHave(chess a)
     {
-        for(int i=0;i<have.GetLength(0);i++)
+        for (int i = 0; i < have.GetLength(0); i++)
         {
-            if(!have[i]) continue;
+            if (!have[i]) continue;
 
-            if(a == have[i] && have[i].mChesspPieces == a.mChesspPieces && have[i].mChessType == a.mChessType)
+            if (a == have[i] && have[i].mChesspPieces == a.mChesspPieces && have[i].mChessType == a.mChessType)
             {
                 return true;
             }
@@ -83,12 +99,12 @@ public class Player
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
