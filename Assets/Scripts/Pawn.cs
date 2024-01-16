@@ -17,6 +17,7 @@ public class Pawn : chess
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -83,6 +84,7 @@ public class Pawn : chess
                     }
                 }
             }
+            
         }
 
         // attack

@@ -106,11 +106,14 @@ public class chessBoard : MonoBehaviour
     }
 
 
-    void placement(chess piece, int x, int y)
+    public void placement(chess piece, int x, int y)
     {
-        Vector2 position = new Vector2(x, y) * gridSize;
-        piece.transform.position = originPosition + new Vector3(position.x, 0.0f, position.y);
-        piece.transform.localEulerAngles = chessAngle;
+        if(piece != null)
+        {
+            Vector2 position = new Vector2(x, y) * gridSize;
+            piece.transform.position = originPosition + new Vector3(position.x, 0.0f, position.y);
+            piece.transform.localEulerAngles = chessAngle;
+        }
 
         boardChesses[x, y] = piece;
     }
