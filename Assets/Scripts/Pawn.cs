@@ -60,6 +60,7 @@ public class Pawn : chess
         List<Vector2Int> moveable = new List<Vector2Int>();
 
         int[][] directions = pawn;
+        // forward
         int dirLength = (Gamedev.instance.determineMove(this) ? 1 : 2);
         for (int dir = 0; dir < dirLength; dir++)
         {
@@ -84,7 +85,7 @@ public class Pawn : chess
             }
         }
 
-
+        // attack
         for (int i = 2; i < 4; i++)
         {
 
@@ -108,6 +109,8 @@ public class Pawn : chess
             }
 
         }
+
+        // TODO: check EnPassant attack
 
 
 

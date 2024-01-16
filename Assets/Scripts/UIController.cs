@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,9 @@ public class UIController : MonoBehaviour
     
     public Vector2 boardIdsAnchorOrigin;
     public Vector2 boardIdsAnchorSize;
+
+    public RectTransform considerTimeMenu;
+    public List<Button> considerTimeOptions;
 
     [Tooltip("DebugSection")]
     public bool debugMode;
@@ -49,6 +53,11 @@ public class UIController : MonoBehaviour
         debugMoveHistory.text = "";
     }
 
+    private void setUiActive(RectTransform menu, bool isActive)
+    {
+        if(menu == null) return;
+        menu.gameObject.SetActive(isActive);
+    }
 
     private void chessBoardIdsInit()
     {
@@ -69,6 +78,23 @@ public class UIController : MonoBehaviour
         if(!(playersInfo != null) && !(0 <= index && index < playersInfo.Length)) return null;
 
         return playersInfo[index];
+    }
+
+    public void setConsiderTimeMenuActive(bool isActive)
+    {
+        setUiActive(considerTimeMenu, isActive);
+    }
+
+    public void setConsiderTimeOptions(int index, string display, Action<int> onClick)
+    {
+        if(index < 0 
+        || considerTimeOptions.Count <= index
+        || considerTimeOptions[index] == null
+        ) return;
+        
+        considerTimeOptions[index].GetComponentInChildren<TextMeshProUGUI>().text = display;
+        considerTimeOptions[index].onClick.RemoveAllListeners();
+        considerTimeOptions[index].onClick.AddListener(delegate() {onClick?.Invoke(index);});
     }
 }
 

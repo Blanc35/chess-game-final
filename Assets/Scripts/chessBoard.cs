@@ -156,7 +156,7 @@ public class chessBoard : MonoBehaviour
 
     static public string getBoardCodeString (int index)
 	{
-		return char.ConvertFromUtf32 (index + 65);
+		return char.ConvertFromUtf32 (index + char.ConvertToUtf32("a", 0));
 	}
 
     static public int getGrid(Vector2Int grid2)

@@ -9,7 +9,25 @@ public class Gamedev : MonoBehaviour
 
     float fixedTimer = 0.0f;
 
-    public float[] considerSec = { 60.0f, 5*60.0f, 10*60.0f }; 
+    public List<SettingConsiderTime> settingConsiderTime = new List<SettingConsiderTime>() 
+    { 
+        new SettingConsiderTime()
+        {
+            description = "Blitz",
+            sec = 60.0f
+        },
+        new SettingConsiderTime()
+        {
+            description = "Rapid",
+            sec = 5*60.0f
+        },
+        new SettingConsiderTime()
+        {
+            description = "Classic",
+            sec = 10*60.0f
+        },
+    }; 
+    int considerSecIndex;
 
     public List<chess> moved;
 
@@ -33,7 +51,6 @@ public class Gamedev : MonoBehaviour
     void Start()
     {
         initialize();
-        startGame();
     }
 
     // Update is called once per frame
@@ -59,6 +76,8 @@ public class Gamedev : MonoBehaviour
     {
         // Initialize game system
         fixedTimer = 0.0f;
+ 
+        considerSecIndex = 0;
 
         moved = new List<chess>();
 
@@ -79,8 +98,28 @@ public class Gamedev : MonoBehaviour
 
         // UI initialize
         uiController.Initialize();
-        // TODO: set consider time ui menu
+        // set consider time ui menu
+        uiController.setConsiderTimeMenuActive(true);
+        for(int i = 0; i < settingConsiderTime.Count; i++)
+        {
+            if(settingConsiderTime[i] == null || settingConsiderTime[i].sec <= 0) continue;
+            TimeSpan timeSpan = TimeSpan.FromSeconds(settingConsiderTime[i].sec);
+            List<string> timeUnits = new List<string>();
+            if(timeSpan.Minutes > 0) timeUnits.Add($"{timeSpan.Minutes} min");
+            if(timeSpan.Seconds > 0) timeUnits.Add($"{timeSpan.Seconds} sec");
+            string timeFormat = string.Join(", ", timeUnits);
 
+            uiController.setConsiderTimeOptions
+            (
+                i, $"{settingConsiderTime[i].description} \n ({timeFormat})", 
+                delegate(int index) 
+                {
+                    considerSecIndex = index;
+                    uiController.setConsiderTimeMenuActive(false);
+                    startGame();
+                }
+            );
+        }
     }
 
     void startGame()
@@ -92,10 +131,10 @@ public class Gamedev : MonoBehaviour
         other = playerColor[(int)chessColor] = new Player("Joe", chessColor);
         
         // TODO: get ui consider timer selected
-        int tempIndex = 0;
+        int tempIndex = considerSecIndex;
         // configure considerTime
-        self.considerTime = considerSec[tempIndex];
-        other.considerTime = considerSec[tempIndex];
+        self.considerTime = settingConsiderTime[tempIndex].sec;
+        other.considerTime = settingConsiderTime[tempIndex].sec;
 
         // configure chessboard
         // Create white chess
@@ -138,6 +177,9 @@ public class Gamedev : MonoBehaviour
 
         // first player
         changePlayer();
+
+        // close all game setting menu
+        uiController.setConsiderTimeMenuActive(false);
     }
 
     public void createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
@@ -346,4 +388,27 @@ public class Gamedev : MonoBehaviour
             uiController.debugMoveHistory.text += msg + "\n";
         }
     }
+
+    private static Vector2Int GetNextEnPassantSquare(HalfMove lastHalfMove) {
+        chess.chesspPieces lastTurnPieceColor = lastHalfMove.chessPiece.mChesspPieces;
+        int pawnStartingRank = lastTurnPieceColor == chess.chesspPieces.White ? 2 : 7;
+        int pawnEndingRank = lastTurnPieceColor == chess.chesspPieces.White ? 4 : 5;
+
+        Vector2Int enPassantSquare = new Vector2Int(-1, -1);
+        if (lastHalfMove.chessPiece.mChessType == chess.chessType.Pawn && lastHalfMove.Move.Start.y == pawnStartingRank && lastHalfMove.Move.End.y == pawnEndingRank) {
+            int rankOffset = lastTurnPieceColor == chess.chesspPieces.White ? -1 : 1;
+            enPassantSquare = lastHalfMove.Move.End + new Vector2Int(0, rankOffset);
+        }
+
+        return enPassantSquare;
+    }
+}
+
+
+
+[System.Serializable]
+public class SettingConsiderTime
+{
+    public string description;
+    public float sec;
 }
