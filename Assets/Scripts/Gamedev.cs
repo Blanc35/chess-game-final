@@ -29,6 +29,31 @@ public class Gamedev : MonoBehaviour
     }; 
     int considerSecIndex;
 
+    public List<SettingPromotion> settingPromotions = new List<SettingPromotion>() 
+    { 
+        new SettingPromotion()
+        {
+            chessType = chess.chessType.Queen,
+            displayName = "Q-Queen",
+        },
+        new SettingPromotion()
+        {
+            chessType = chess.chessType.Bishop,
+            displayName = "B-Bishop",
+        },
+        new SettingPromotion()
+        {
+            chessType = chess.chessType.Rook,
+            displayName = "R-Rook",
+        },
+        new SettingPromotion()
+        {
+            chessType = chess.chessType.Knight,
+            displayName = "N-Knight",
+        },
+    }; 
+    Vector2Int promotionGrid2;
+
     public List<chess> moved;
 
     public Player self;
@@ -120,6 +145,15 @@ public class Gamedev : MonoBehaviour
                 }
             );
         }
+        // set promotion ui menu
+        uiController.setPromotionMenuActive(false, null);
+        for(int i = 0; i < settingPromotions.Count; i++)
+        {
+            uiController.setPromotionOptions
+            (
+                settingPromotions[i].chessType, settingPromotions[i].displayName, PromotionChess
+            );
+        }
     }
 
     void startGame()
@@ -180,6 +214,7 @@ public class Gamedev : MonoBehaviour
 
         // close all game setting menu
         uiController.setConsiderTimeMenuActive(false);
+        uiController.setPromotionMenuActive(false, null);
     }
 
     public void createChess(chess.chesspPieces color, chess.chessType type, int x, int y)
@@ -322,6 +357,8 @@ public class Gamedev : MonoBehaviour
         Debug.Log(getInfo(piece));
 
         turns.getEatan(piece);
+        Player tmpOthers = (turns == self ? other : self);
+        tmpOthers.removeHave(piece);
         Destroy(piece.gameObject);
 
         checkWinner();
@@ -389,6 +426,25 @@ public class Gamedev : MonoBehaviour
         }
     }
 
+    public void SelectPromotion(Vector2Int grid2)
+    {
+        promotionGrid2 = grid2;
+        uiController.setPromotionMenuActive(true, ba.getChess(grid2));
+    }
+    
+    public void PromotionChess(chess.chessType chessType)
+    {
+        chess piece = ba.getChess(promotionGrid2);
+        if(piece == null) return;
+        
+        uiController.setPromotionMenuActive(false, null);
+
+        Debug.LogWarning($"@@@@ promotion {getInfo(piece)}");
+        playerColor[(int)piece.mChesspPieces].removeHave(piece);
+        Destroy(piece.gameObject);
+        Gamedev.instance.createChess(piece.mChesspPieces, chessType, promotionGrid2.x, promotionGrid2.y);
+    }
+
     private static Vector2Int GetNextEnPassantSquare(HalfMove lastHalfMove) {
         chess.chesspPieces lastTurnPieceColor = lastHalfMove.chessPiece.mChesspPieces;
         int pawnStartingRank = lastTurnPieceColor == chess.chesspPieces.White ? 2 : 7;
@@ -411,4 +467,12 @@ public class SettingConsiderTime
 {
     public string description;
     public float sec;
+}
+
+
+[System.Serializable]
+public class SettingPromotion
+{
+    public chess.chessType chessType;
+    public string displayName;
 }

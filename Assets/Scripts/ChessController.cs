@@ -230,20 +230,18 @@ public class ChessController : MonoBehaviour
 
         chessBoardCtrl.movements(piece, grid2);
 
-
+        // check promotion
         if(piece.mChessType == chess.chessType.Pawn 
         && chessBoardCtrl.getGrid2(piece).y == 0
         )
         {
-                 Gamedev.instance.createChess(chess.chesspPieces.Black, chess.chessType.Rook, grid2.x,grid2.y);
-            chessBoardCtrl.placement(null, grid2.x,grid2.y);
+            Gamedev.instance.SelectPromotion(grid2);
         }
         if(piece.mChessType == chess.chessType.Pawn 
         && chessBoardCtrl.getGrid2(piece).y == 7
         )
         {
-            Gamedev.instance.createChess(chess.chesspPieces.White, chess.chessType.Rook, grid2.x,grid2.y);
-            chessBoardCtrl.placement(null, grid2.x,grid2.y);
+            Gamedev.instance.SelectPromotion(grid2);
         }
     }
 }

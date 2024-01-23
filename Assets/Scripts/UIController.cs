@@ -20,6 +20,12 @@ public class UIController : MonoBehaviour
     public RectTransform considerTimeMenu;
     public List<Button> considerTimeOptions;
 
+    public GridLayoutGroup promotionMenu;
+    public GameObject promotionOptionPrefab;
+    public Dictionary<chess.chessType, UiPromotionInfo> promotionOptions;
+    
+
+
     [Tooltip("DebugSection")]
     public bool debugMode;
     public TextMeshProUGUI debugMoveHistory;
@@ -50,13 +56,15 @@ public class UIController : MonoBehaviour
             info.bindComponents();
         }
 
+        promotionOptions = new Dictionary<chess.chessType, UiPromotionInfo>();
+
         debugMoveHistory.text = "";
     }
 
-    private void setUiActive(RectTransform menu, bool isActive)
+    private void setUiActive(GameObject menu, bool isActive)
     {
         if(menu == null) return;
-        menu.gameObject.SetActive(isActive);
+        menu.SetActive(isActive);
     }
 
     private void chessBoardIdsInit()
@@ -82,7 +90,7 @@ public class UIController : MonoBehaviour
 
     public void setConsiderTimeMenuActive(bool isActive)
     {
-        setUiActive(considerTimeMenu, isActive);
+        setUiActive(considerTimeMenu.gameObject, isActive);
     }
 
     public void setConsiderTimeOptions(int index, string display, Action<int> onClick)
@@ -95,6 +103,48 @@ public class UIController : MonoBehaviour
         considerTimeOptions[index].GetComponentInChildren<TextMeshProUGUI>().text = display;
         considerTimeOptions[index].onClick.RemoveAllListeners();
         considerTimeOptions[index].onClick.AddListener(delegate() {onClick?.Invoke(index);});
+    }
+
+    public void setPromotionMenuActive(bool isActive, chess piece)
+    {
+        if(isActive && piece != null)
+        {
+            Vector2Int grid2 = Gamedev.instance.ba.getGrid2(piece);
+            Vector3 position = new Vector3(chessBoardIdsX[grid2.x].position.x, chessBoardIdsY[grid2.y].position.y, chessBoardIdsX[grid2.x].position.z);
+            promotionMenu.transform.position = position;
+            if(grid2.y < 4)
+            {
+                promotionMenu.startCorner = GridLayoutGroup.Corner.LowerLeft;
+                promotionMenu.childAlignment = TextAnchor.LowerCenter;
+            }
+            else
+            {                    
+                promotionMenu.startCorner = GridLayoutGroup.Corner.UpperLeft;
+                promotionMenu.childAlignment = TextAnchor.UpperCenter;
+            }
+        }
+        setUiActive(promotionMenu.gameObject, isActive);
+    }
+
+    public void setPromotionOptions(chess.chessType chessType, string display, Action<chess.chessType> onClick)
+    {
+        if(promotionOptions == null
+        || promotionMenu == null
+        || promotionOptionPrefab == null
+        ) return;
+        
+        UiPromotionInfo promotionInfo = null;
+        if(!promotionOptions.ContainsKey(chessType))
+        {
+            GameObject tmp = Instantiate(promotionOptionPrefab, Vector3.zero, Quaternion.identity, promotionMenu.transform);
+            promotionInfo = new UiPromotionInfo().bindComponents(tmp.GetComponent<RectTransform>());
+            promotionOptions.Add(chessType, promotionInfo);
+        }
+        else promotionOptions.TryGetValue(chessType, out promotionInfo);
+            
+        promotionInfo.name.text = display;
+        promotionInfo.button.onClick.RemoveAllListeners();
+        promotionInfo.button.onClick.AddListener(delegate() {onClick?.Invoke(chessType);});
     }
 }
 
@@ -113,5 +163,25 @@ public class UiPlayerInfo
         name = rectTrans.Find("DisplayName").GetComponent<TextMeshProUGUI>();
         turnIndicator = rectTrans.Find("ImageTurn").GetComponent<Image>();
         considerTime = rectTrans.Find("considerTime").GetComponent<TextMeshProUGUI>();
+    }
+}
+
+
+[System.Serializable]
+public class UiPromotionInfo
+{
+    public RectTransform rectTrans;
+    public Button button {get; private set;}
+    public TextMeshProUGUI name {get; private set;}
+
+    public UiPromotionInfo bindComponents(RectTransform rect)
+    {
+        rectTrans = rect;
+        if(!rectTrans) return this;
+
+        button = rectTrans.GetComponent<Button>();
+        name = rectTrans.Find("DisplayName").GetComponent<TextMeshProUGUI>();
+
+        return this;
     }
 }

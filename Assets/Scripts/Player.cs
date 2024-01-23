@@ -82,17 +82,21 @@ public class Player
         return false;
     }
 
-    // public bool getHave(Vector2Int grid2)
-    // {
-    //     for(int i=0;i<have.GetLength(0);i++)
-    //     {
-    //         if(have[i].mChesspPieces == a.mChesspPieces && have[i].mChessType == a.mChessType)
-    //         {
-    //             return true;
-    //         }
-    //     }
-    //     return true;
-    // }
+    public bool removeHave(chess piece)
+    {
+        if(piece == null) return false;
+        for (int i = 0; i < have.GetLength(0); i++)
+        {
+            if (have[i] == piece
+            && have[i].mChesspPieces == piece.mChesspPieces 
+            && have[i].mChessType == piece.mChessType)
+            {
+                have[i] = null;
+                break;
+            }
+        }
+        return true;
+    }
 
 
 
