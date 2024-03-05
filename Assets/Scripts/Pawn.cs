@@ -18,6 +18,8 @@ public class Pawn : chess
     }
 
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -100,6 +102,20 @@ public class Pawn : chess
                     moveable.Add(moveableGrid2);
                 }
 
+                Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
+                Vector2Int moveableGrid2Right = new Vector2Int(grid2.x +1, grid2.y);
+                if(
+                    grid2.y==3 
+                    &&
+                    (
+                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)
+                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)
+                    )
+                )
+                {
+                    moveable.Add(moveableGrid2);
+                }
+
             }
             else
             {
@@ -108,15 +124,29 @@ public class Pawn : chess
                 {
                     moveable.Add(moveableGrid2);
                 }
+                 Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
+                Vector2Int moveableGrid2Right = new Vector2Int(grid2.x +1, grid2.y);
+                if(
+                    grid2.y==4 
+                    &&
+                    (
+                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)
+                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)
+                    )
+                )
+                {
+                    moveable.Add(moveableGrid2);
+                }
+
+            
             }
 
         }
 
         // TODO: check EnPassant attack
-
-
-
-        return moveable;
+    return moveable;
     }
+    
+    
 
 }
