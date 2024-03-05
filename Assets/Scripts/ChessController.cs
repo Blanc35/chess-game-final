@@ -229,5 +229,19 @@ public class ChessController : MonoBehaviour
         }
 
         chessBoardCtrl.movements(piece, grid2);
+
+        // check promotion
+        if(piece.mChessType == chess.chessType.Pawn 
+        && chessBoardCtrl.getGrid2(piece).y == 0
+        )
+        {
+            Gamedev.instance.SelectPromotion(grid2);
+        }
+        if(piece.mChessType == chess.chessType.Pawn 
+        && chessBoardCtrl.getGrid2(piece).y == 7
+        )
+        {
+            Gamedev.instance.SelectPromotion(grid2);
+        }
     }
 }
