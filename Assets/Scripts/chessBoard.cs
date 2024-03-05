@@ -24,6 +24,7 @@ public class chessBoard : MonoBehaviour
     public Vector3 originPosition;
     public Vector3 chessAngle;
 
+
     // Start is called before the first frame update
     void Start()
     {
