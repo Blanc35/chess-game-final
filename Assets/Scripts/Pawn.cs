@@ -61,6 +61,8 @@ public class Pawn : chess
     public override List<Vector2Int> getMoveable(Vector2Int grid2)
     {
         List<Vector2Int> moveable = new List<Vector2Int>();
+        List<Vector2Int> canAttack = new List<Vector2Int>();
+
 
         int[][] directions = pawn;
         // forward
@@ -95,11 +97,13 @@ public class Pawn : chess
 
             if (mChesspPieces == chesspPieces.Black)
             {
+                
 
                 Vector2Int moveableGrid2 = new Vector2Int(grid2.x + directions[i][0], grid2.y + -1 * directions[i][1]);
                 if (!Gamedev.instance.isFriendlyChess(moveableGrid2) && Gamedev.instance.ba.getChess(moveableGrid2) != null)
                 {
                     moveable.Add(moveableGrid2);
+                    canAttack.Add(moveableGrid2);
                 }
 
                 Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
@@ -114,6 +118,9 @@ public class Pawn : chess
                 )
                 {
                     moveable.Add(moveableGrid2);
+                    if ((!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x) ) canAttack.Add(moveableGrid2Left);
+                    else if ((!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x))  canAttack.Add(moveableGrid2Right);
+
                 }
 
             }
@@ -123,6 +130,7 @@ public class Pawn : chess
                 if (!Gamedev.instance.isFriendlyChess(moveableGrid2) && Gamedev.instance.ba.getChess(moveableGrid2) != null)
                 {
                     moveable.Add(moveableGrid2);
+                    canAttack.Add(moveableGrid2);
                 }
                  Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
                 Vector2Int moveableGrid2Right = new Vector2Int(grid2.x +1, grid2.y);
@@ -136,6 +144,8 @@ public class Pawn : chess
                 )
                 {
                     moveable.Add(moveableGrid2);
+                    if( (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)) canAttack.Add(moveableGrid2Left);
+                    else if((!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)) canAttack.Add(moveableGrid2Right);
                 }
 
             
