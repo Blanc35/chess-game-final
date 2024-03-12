@@ -46,9 +46,9 @@ public class King : chess
         return false;
 
     }
-           public override List<Vector2Int> getMoveable(Vector2Int grid2)
+    public override Dictionary<Vector2Int, List<Vector2Int>> getMoveable(Vector2Int grid2)
     {
-        List<Vector2Int> moveable = new List<Vector2Int>();
+        Dictionary<Vector2Int, List<Vector2Int>> moveAttacks = new Dictionary<Vector2Int, List<Vector2Int>>();
 
         int[][] directions = king;
         for(int dir = 0; dir < directions.GetLength(0); dir++)
@@ -56,10 +56,10 @@ public class King : chess
             for (int i = 1; i < 2; i++)
             {
                 Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i * directions[dir][0], grid2.y + i * directions[dir][1]);
-                moveable.Add(moveableGrid2);
+                moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2});
             }
         }
 
-        return moveable;
+        return moveAttacks;
     }
 }

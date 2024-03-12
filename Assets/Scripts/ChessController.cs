@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ChessController : MonoBehaviour
@@ -13,7 +14,7 @@ public class ChessController : MonoBehaviour
     List<GameObject> highlightMoveGrid;
 
     chess movingChess;
-    List<Vector2Int> moveableGrid2;
+    Dictionary<Vector2Int, List<Vector2Int>> moveAttackGrid2;
 
     void Awake()
     {
@@ -46,35 +47,30 @@ public class ChessController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     chess targetChess = chessBoardCtrl.getChess(grid2);
-                    // Debug.Log($"movingChess: {Gamedev.instance.getInfo(movingChess)}, targetChess: {Gamedev.instance.getInfo(targetChess)}");
+                    Debug.Log($"movingChess: {Gamedev.instance.getInfo(movingChess)}, targetChess: {Gamedev.instance.getInfo(targetChess)}");
                     
                     if(movingChess == null) EnterState(grid2);
                     else if (movingChess == targetChess) CancelMove();
                     else 
                     {
                         // TODO: Check chess rules and move
-                        if (!moveableGrid2.Contains(grid2))
+                        if (!moveAttackGrid2.ContainsKey(grid2))
                         {
                             return;
                         }
 
-                        if (targetChess == null)
-                        {
-                            // TODO: move history
-                            Gamedev.instance.AddMoveHistory(new HalfMove(movingChess, new Movement(chessBoardCtrl.getGrid2(movingChess), grid2), false, false));
-                            Move(movingChess, grid2);
-                        }
-                        else
-                        {
+                        // get attack targets
+                        List<Vector2Int> attackGrid2List = new List<Vector2Int>();
+                        moveAttackGrid2.TryGetValue(grid2, out attackGrid2List);
+
                             // TODO: Check checkmate rules and history
                             Gamedev.instance.AddMoveHistory(new HalfMove(movingChess, new Movement(chessBoardCtrl.getGrid2(movingChess), grid2), true, false));
 
                             // TODO: CapturePieceAt
-                            Gamedev.instance.eat(targetChess);
+                        foreach(var attackGrid2 in attackGrid2List) Gamedev.instance.eat(chessBoardCtrl.getChess(attackGrid2));
 
                             Move(movingChess, grid2);
 
-                        }
                         ExitState();
                     }
                 }
@@ -117,7 +113,7 @@ public class ChessController : MonoBehaviour
 
         highlightMoveGrid = new List<GameObject>();
 
-        moveableGrid2 = new List<Vector2Int>();
+        moveAttackGrid2 = new Dictionary<Vector2Int, List<Vector2Int>>();
     }
 
     void HighlightBoard (GameObject highlightObject, Vector2Int grid2)
@@ -177,10 +173,14 @@ public class ChessController : MonoBehaviour
         // this.enabled = true;
 
         // get moveable
-        moveableGrid2 = movingChess.getMoveable(grid2);
-        moveableGrid2.RemoveAll(x => !chessBoard.checkValidGrid2(x));
-        moveableGrid2.RemoveAll(x => Gamedev.instance.isFriendlyChess(x));
+        moveAttackGrid2 = movingChess.getMoveable(grid2);
+        // foreach(var tmp in moveAttackGrid2.Keys) Debug.LogError($"@@@EnterState1 {Gamedev.instance.getInfo(tmp)}");
+        moveAttackGrid2 = moveAttackGrid2.Where(x => chessBoard.checkValidGrid2(x.Key)).ToDictionary(x => x.Key, x => x.Value);
+        // foreach(var tmp in moveAttackGrid2.Keys) Debug.LogError($"@@@EnterState2 {Gamedev.instance.getInfo(tmp)}");
+        moveAttackGrid2 = moveAttackGrid2.Where(x => !Gamedev.instance.isFriendlyChess(x.Key)).ToDictionary(x => x.Key, x => x.Value);
+        // foreach(var tmp in moveAttackGrid2.Keys) Debug.LogError($"@@@EnterState3 {Gamedev.instance.getInfo(tmp)}");
 
+        List<Vector2Int> moveableGrid2 = moveAttackGrid2.Keys.ToList();
         // show moveable highlights
         HighlightBoard(highlightGridMovePrefab, highlightMoveGrid, moveableGrid2);
         
