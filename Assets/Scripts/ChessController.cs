@@ -62,6 +62,7 @@ public class ChessController : MonoBehaviour
                         // get attack targets
                         List<Vector2Int> attackGrid2List = new List<Vector2Int>();
                         moveAttackGrid2.TryGetValue(grid2, out attackGrid2List);
+                        attackGrid2List.RemoveAll(x => chessBoardCtrl.getChess(x) == null);
 
                             // TODO: Check checkmate rules and history
                             Gamedev.instance.AddMoveHistory(new HalfMove(movingChess, new Movement(chessBoardCtrl.getGrid2(movingChess), grid2), true, false));
