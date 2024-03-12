@@ -107,12 +107,18 @@ public class Pawn : chess
                 // en passant attack
                 Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
                 Vector2Int moveableGrid2Right = new Vector2Int(grid2.x +1, grid2.y);
+                Debug.LogError(Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1));
                 if(
                     grid2.y==3 
                     &&
                     (
-                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)
-                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)
+                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x
+                        && Gamedev.instance.ba.getChess(moveableGrid2Left) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
+                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x
+                        && Gamedev.instance.ba.getChess(moveableGrid2Right) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
+
                     )
                 )
                 {
@@ -137,9 +143,17 @@ public class Pawn : chess
                 if(
                     grid2.y==4 
                     &&
+                    Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1).mChessType == chess.chessType.Pawn
+                    &&
+                    Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1).mChesspPieces == chess.chesspPieces.Black
+                    &&
                     (
-                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)
-                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)
+                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x
+                        && Gamedev.instance.ba.getChess(moveableGrid2Left) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
+                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x
+                        &&Gamedev.instance.ba.getChess(moveableGrid2Right) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
                     )
                 )
                 {

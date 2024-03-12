@@ -224,7 +224,7 @@ public class ChessController : MonoBehaviour
     public void Move(chess piece, Vector2Int grid2)
     {
         // check pawn moved
-        if (piece.mChessType == chess.chessType.Pawn && !Gamedev.instance.determineMove(piece))
+        //if (piece.mChessType == chess.chessType.Pawn && !Gamedev.instance.determineMove(piece))
         {
             Gamedev.instance.historyMoved(piece);
         }
