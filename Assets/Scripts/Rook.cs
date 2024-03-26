@@ -58,6 +58,7 @@ public class Rook : chess
                 
                 if(Gamedev.instance.ba.getChess(moveableGrid2) != null) break;
             }
+            
         }
 
         return moveAttacks;

@@ -53,6 +53,19 @@ public class King : chess
 
         int[][] directions = king;
         bool isMoved = Gamedev.instance.determineMove(this);
+        Vector2Int[] rookPlace = new Vector2Int[]{ new Vector2Int(0,0),  new Vector2Int(7,7),  new Vector2Int(7,0),  new Vector2Int(0,7)};
+        for(int ii=0;ii<rookPlace.GetLength(0); ii++)
+        {
+            int scale = 1;
+            chess rookChess = Gamedev.instance.ba.getChess(rookPlace[ii]);
+            Gamedev.instance.determineMove(rookChess);
+            if(isMoved == false
+            && directions[ii][1] == 0 && rookChess.mChessType==chess.chessType.Rook
+            )
+            {
+                scale *= 2;
+            }
+        }
     
         for(int dir = 0; dir < directions.GetLength(0); dir++)
         {
