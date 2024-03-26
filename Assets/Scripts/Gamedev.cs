@@ -257,6 +257,15 @@ public class Gamedev : MonoBehaviour
     {
         moved.Add(a);
     } 
+     public chess findMoved(int index)
+     {
+        return moved[index];
+
+     }
+     public int findMovedCount()
+     {
+        return moved.Count;
+     }
 
     public bool isChessBelongToCurrentPlayer(chess piece)
     {

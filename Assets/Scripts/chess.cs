@@ -20,9 +20,9 @@ public class chess : MonoBehaviour
         return false;
     }
     
-    public virtual List<Vector2Int> getMoveable(Vector2Int grid)
+    public virtual Dictionary<Vector2Int, List<Vector2Int>> getMoveable(Vector2Int grid)
     {
-        return new List<Vector2Int>();
+        return new Dictionary<Vector2Int, List<Vector2Int>>();
     }
 
    public enum chesspPieces

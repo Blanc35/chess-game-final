@@ -58,9 +58,10 @@ public class Pawn : chess
         }
         return false;
     }
-    public override List<Vector2Int> getMoveable(Vector2Int grid2)
+    public override Dictionary<Vector2Int, List<Vector2Int>> getMoveable(Vector2Int grid2)
     {
-        List<Vector2Int> moveable = new List<Vector2Int>();
+        Dictionary<Vector2Int, List<Vector2Int>> moveAttacks = new Dictionary<Vector2Int, List<Vector2Int>>();
+
 
         int[][] directions = pawn;
         // forward
@@ -74,7 +75,7 @@ public class Pawn : chess
                     Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i * directions[dir][0], grid2.y + i * -1 * directions[dir][1]);
                     if (Gamedev.instance.ba.getChess(moveableGrid2) == null)
                     {
-                        moveable.Add(moveableGrid2);
+                        moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){});
                     }
                 }
                 else
@@ -82,7 +83,7 @@ public class Pawn : chess
                     Vector2Int moveableGrid2 = new Vector2Int(grid2.x + i * directions[dir][0], grid2.y + i * directions[dir][1]);
                     if (Gamedev.instance.ba.getChess(moveableGrid2) == null)
                     {
-                        moveable.Add(moveableGrid2);
+                        moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){});
                     }
                 }
             }
@@ -95,47 +96,69 @@ public class Pawn : chess
 
             if (mChesspPieces == chesspPieces.Black)
             {
-
+                
+                // normal attack
                 Vector2Int moveableGrid2 = new Vector2Int(grid2.x + directions[i][0], grid2.y + -1 * directions[i][1]);
                 if (!Gamedev.instance.isFriendlyChess(moveableGrid2) && Gamedev.instance.ba.getChess(moveableGrid2) != null)
                 {
-                    moveable.Add(moveableGrid2);
+                    moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2});
                 }
 
+                // en passant attack
                 Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
                 Vector2Int moveableGrid2Right = new Vector2Int(grid2.x +1, grid2.y);
+                Debug.LogError(Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1));
                 if(
                     grid2.y==3 
                     &&
                     (
-                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)
-                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)
+                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x
+                        && Gamedev.instance.ba.getChess(moveableGrid2Left) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
+                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x
+                        && Gamedev.instance.ba.getChess(moveableGrid2Right) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
+
                     )
                 )
                 {
-                    moveable.Add(moveableGrid2);
+                    if ((!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x) ) moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2Left});
+                    else if ((!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x))  moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2Right});
+
                 }
 
             }
             else
             {
+                // normal attack
                 Vector2Int moveableGrid2 = new Vector2Int(grid2.x + directions[i][0], grid2.y + directions[i][1]);
                 if (!Gamedev.instance.isFriendlyChess(moveableGrid2) && Gamedev.instance.ba.getChess(moveableGrid2) != null)
                 {
-                    moveable.Add(moveableGrid2);
+                    moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2});
                 }
-                 Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
+
+                // en passant attack
+                Vector2Int moveableGrid2Left = new Vector2Int(grid2.x -1, grid2.y);
                 Vector2Int moveableGrid2Right = new Vector2Int(grid2.x +1, grid2.y);
                 if(
                     grid2.y==4 
                     &&
+                    Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1).mChessType == chess.chessType.Pawn
+                    &&
+                    Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1).mChesspPieces == chess.chesspPieces.Black
+                    &&
                     (
-                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)
-                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)
+                        (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x
+                        && Gamedev.instance.ba.getChess(moveableGrid2Left) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
+                        || (!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x
+                        &&Gamedev.instance.ba.getChess(moveableGrid2Right) == Gamedev.instance.findMoved(Gamedev.instance.findMovedCount()-1)
+                        )
                     )
                 )
                 {
-                    moveable.Add(moveableGrid2);
+                    if( (!Gamedev.instance.isFriendlyChess(moveableGrid2Left) && Gamedev.instance.ba.getChess(moveableGrid2Left) != null && moveableGrid2Left.x == moveableGrid2.x)) moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2Left});
+                    else if((!Gamedev.instance.isFriendlyChess(moveableGrid2Right) && Gamedev.instance.ba.getChess(moveableGrid2Right) != null && moveableGrid2Right.x == moveableGrid2.x)) moveAttacks.Add(moveableGrid2, new List<Vector2Int>(){moveableGrid2Right});
                 }
 
             
@@ -144,7 +167,7 @@ public class Pawn : chess
         }
 
         // TODO: check EnPassant attack
-    return moveable;
+    return moveAttacks;
     }
     
     
